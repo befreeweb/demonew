@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOC Chain Token Sale - Join the Entertainment Revolution</title>
+    <link rel="stylesheet" href="sale.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="BOC Chain" class="logo">
+                <span class="brand-text">BOC Chain</span>
+            </div>
+            <div class="nav-links">
+                <a href="#sale-info">Sale Info</a>
+                <a href="#how-to-buy">How to Buy</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#faq">FAQ</a>
+                <button class="btn-primary">Connect Wallet</button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="sale-badge">
+                        <i class="fas fa-fire"></i>
+                        <span>LIVE TOKEN SALE</span>
+                    </div>
+                    <h1>BOC Chain Token Sale</h1>
+                    <p class="hero-subtitle">Revolutionary Entertainment Blockchain Platform</p>
+                    <p class="hero-description">Join the future of entertainment technology. BOC Chain enables creators to tokenize content, build communities, and monetize digital assets in the decentralized entertainment ecosystem.</p>
+                    
+                    <!-- Sale Timer -->
+                    <div class="sale-timer">
+                        <h3>Sale Ends In:</h3>
+                        <div class="countdown">
+                            <div class="time-unit">
+                                <span class="time-value" id="days">15</span>
+                                <span class="time-label">Days</span>
+                            </div>
+                            <div class="time-unit">
+                                <span class="time-value" id="hours">08</span>
+                                <span class="time-label">Hours</span>
+                            </div>
+                            <div class="time-unit">
+                                <span class="time-value" id="minutes">45</span>
+                                <span class="time-label">Minutes</span>
+                            </div>
+                            <div class="time-unit">
+                                <span class="time-value" id="seconds">23</span>
+                                <span class="time-label">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sale Stats -->
+                    <div class="sale-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">$2.8M</span>
+                            <span class="stat-label">Raised</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">12,847+</span>
+                            <span class="stat-label">Participants</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">56%</span>
+                            <span class="stat-label">Sold</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Purchase Widget -->
+                <div class="purchase-widget">
+                    <div class="widget-header">
+                        <h3>Buy BOC Tokens</h3>
+                        <div class="current-phase">
+                            <span class="phase-label">Phase 3 of 4</span>
+                            <span class="phase-price">1 BOC = $0.15</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-section">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>$2.8M / $5.0M</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="56"></div>
+                        </div>
+                        <div class="progress-percentage">56% Complete</div>
+                    </div>
+
+                    <!-- Purchase Form -->
+                    <div class="purchase-form">
+                        <div class="payment-method">
+                            <label>Payment Method</label>
+                            <div class="method-selector">
+                                <button class="method-btn active" data-method="eth">
+                                    <i class="fab fa-ethereum"></i>
+                                    <span>ETH</span>
+                                </button>
+                                <button class="method-btn" data-method="usdt">
+                                    <span>USDT</span>
+                                </button>
+                                <button class="method-btn" data-method="usdc">
+                                    <span>USDC</span>
+                                </button>
+                                <button class="method-btn" data-method="bnb">
+                                    <span>BNB</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="amount-input-group">
+                            <label>Amount (USD)</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="usd-amount" placeholder="100" min="50" class="amount-input">
+                                <span class="currency-label">USD</span>
+                            </div>
+                        </div>
+
+                        <div class="conversion-display">
+                            <div class="conversion-item">
+                                <span class="conversion-label">You will receive:</span>
+                                <span class="conversion-value" id="token-amount">666.67 BOC</span>
+                            </div>
+                            <div class="conversion-item">
+                                <span class="conversion-label">Bonus tokens:</span>
+                                <span class="conversion-value bonus" id="bonus-amount">66.67 BOC (10%)</span>
+                            </div>
+                        </div>
+
+                        <div class="wallet-connection">
+                            <button class="btn-connect-wallet">
+                                <i class="fas fa-wallet"></i>
+                                Connect Wallet
+                            </button>
+                        </div>
+
+                        <button class="btn-purchase" disabled>
+                            <i class="fas fa-shopping-cart"></i>
+                            Purchase BOC Tokens
+                        </button>
+
+                        <div class="purchase-info">
+                            <div class="info-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Minimum purchase: $50 USD</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Instant token delivery</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-lock"></i>
+                                <span>Secure smart contract</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sale Information -->
+    <section class="sale-info" id="sale-info">
+        <div class="container">
+            <div class="section-header">
+                <h2>Token Sale Information</h2>
+                <p>Complete details about the BOC Chain token sale phases and structure</p>
+            </div>
+
+            <div class="sale-phases-grid">
+                <div class="phase-card completed">
+                    <div class="phase-status">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Completed</span>
+                    </div>
+                    <h3>Phase 1 - Seed Round</h3>
+                    <div class="phase-details">
+                        <div class="detail-row">
+                            <span class="label">Price:</span>
+                            <span class="value">$0.08</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Allocation:</span>
+                            <span class="value">100M BOC (10%)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Raised:</span>
+                            <span class="value">$8M</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Participants:</span>
+                            <span class="value">250</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-card completed">
+                    <div class="phase-status">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Completed</span>
+                    </div>
+                    <h3>Phase 2 - Private Sale</h3>
+                    <div class="phase-details">
+                        <div class="detail-row">
+                            <span class="label">Price:</span>
+                            <span class="value">$0.12</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Allocation:</span>
+                            <span class="value">150M BOC (15%)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Raised:</span>
+                            <span class="value">$18M</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Participants:</span>
+                            <span class="value">1,200</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-card active">
+                    <div class="phase-status">
+                        <i class="fas fa-fire"></i>
+                        <span>Live Now</span>
+                    </div>
+                    <h3>Phase 3 - Public Sale</h3>
+                    <div class="phase-details">
+                        <div class="detail-row">
+                            <span class="label">Price:</span>
+                            <span class="value">$0.15</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Allocation:</span>
+                            <span class="value">250M BOC (25%)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Target:</span>
+                            <span class="value">$37.5M</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Bonus:</span>
+                            <span class="value">10% Extra Tokens</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-card upcoming">
+                    <div class="phase-status">
+                        <i class="fas fa-clock"></i>
+                        <span>Upcoming</span>
+                    </div>
+                    <h3>Phase 4 - Final Round</h3>
+                    <div class="phase-details">
+                        <div class="detail-row">
+                            <span class="label">Price:</span>
+                            <span class="value">$0.18</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Allocation:</span>
+                            <span class="value">100M BOC (10%)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Target:</span>
+                            <span class="value">$18M</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Bonus:</span>
+                            <span class="value">5% Extra Tokens</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="key-features">
+                <h3>Why Invest in BOC Chain?</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>High Growth Potential</h4>
+                        <p>Entertainment blockchain market projected to reach $67B by 2027</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Strong Community</h4>
+                        <p>Over 50,000 active community members and growing rapidly</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>Innovative Technology</h4>
+                        <p>10,000+ TPS with sub-second finality for entertainment apps</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Strategic Partnerships</h4>
+                        <p>Partnerships with major entertainment companies and platforms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Buy -->
+    <section class="how-to-buy" id="how-to-buy">
+        <div class="container">
+            <div class="section-header">
+                <h2>How to Buy BOC Tokens</h2>
+                <p>Simple step-by-step guide to participate in the token sale</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Connect Your Wallet</h3>
+                        <p>Connect your MetaMask, Trust Wallet, or any Web3 compatible wallet to our secure platform.</p>
+                        <div class="supported-wallets">
+                            <img src="https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop" alt="MetaMask">
+                            <img src="https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop" alt="Trust Wallet">
+                            <img src="https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop" alt="WalletConnect">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Choose Payment Method</h3>
+                        <p>Select your preferred cryptocurrency: ETH, USDT, USDC, or BNB for the purchase.</p>
+                        <div class="payment-options">
+                            <span class="payment-badge">ETH</span>
+                            <span class="payment-badge">USDT</span>
+                            <span class="payment-badge">USDC</span>
+                            <span class="payment-badge">BNB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Enter Purchase Amount</h3>
+                        <p>Specify the amount you want to invest (minimum $50 USD) and see the BOC tokens you'll receive.</p>
+                        <div class="amount-example">
+                            <span>Example: $1,000 = 5,555 BOC + 555 Bonus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Confirm Transaction</h3>
+                        <p>Review your purchase details and confirm the transaction through your wallet.</p>
+                        <div class="security-note">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>All transactions are secured by smart contracts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Receive Your Tokens</h3>
+                        <p>BOC tokens will be instantly credited to your wallet after successful transaction confirmation.</p>
+                        <div class="delivery-info">
+                            <i class="fas fa-clock"></i>
+                            <span>Instant delivery • No waiting period</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Important Notes -->
+            <div class="important-notes">
+                <h3>Important Information</h3>
+                <div class="notes-grid">
+                    <div class="note-item">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <h4>Minimum Purchase</h4>
+                            <p>The minimum purchase amount is $50 USD equivalent in any supported cryptocurrency.</p>
+                        </div>
+                    </div>
+                    <div class="note-item">
+                        <i class="fas fa-gas-pump"></i>
+                        <div>
+                            <h4>Gas Fees</h4>
+                            <p>Network gas fees are separate from your purchase amount and paid to the blockchain network.</p>
+                        </div>
+                    </div>
+                    <div class="note-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Transaction Time</h4>
+                            <p>Transactions typically confirm within 1-5 minutes depending on network congestion.</p>
+                        </div>
+                    </div>
+                    <div class="note-item">
+                        <i class="fas fa-headset"></i>
+                        <div>
+                            <h4>Support</h4>
+                            <p>Our support team is available 24/7 to assist with any purchase-related questions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics -->
+    <section class="tokenomics" id="tokenomics">
+        <div class="container">
+            <div class="section-header">
+                <h2>BOC Token Economics</h2>
+                <p>Comprehensive breakdown of token distribution and utility</p>
+            </div>
+
+            <div class="tokenomics-content">
+                <div class="token-overview">
+                    <div class="token-stats">
+                        <div class="stat-card">
+                            <h3>Total Supply</h3>
+                            <p class="stat-value">600,000,000</p>
+                            <p class="stat-label">BOC Tokens</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Initial Circulation</h3>
+                            <p class="stat-value">240,000,000</p>
+                            <p class="stat-label">BOC Tokens (40%)</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Token Standard</h3>
+                            <p class="stat-value">ERC-20</p>
+                            <p class="stat-label">& BEP-20</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Listing Price</h3>
+                            <p class="stat-value">$0.20</p>
+                            <p class="stat-label">Per BOC Token</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="distribution-chart">
+                    <div class="chart-container">
+                        <canvas id="tokenomicsChart" width="400" height="400"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="color-indicator" style="background: #6366f1;"></div>
+                            <span>Token Sale (40%) - 240M BOC</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-indicator" style="background: #8b5cf6;"></div>
+                            <span>Ecosystem & Rewards (25%) - 150M BOC</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-indicator" style="background: #ec4899;"></div>
+                            <span>Team & Advisors (15%) - 90M BOC</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-indicator" style="background: #f59e0b;"></div>
+                            <span>Marketing & Partnerships (10%) - 60M BOC</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-indicator" style="background: #10b981;"></div>
+                            <span>Reserve & Liquidity (10%) - 60M BOC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Token Utility -->
+            <div class="token-utility">
+                <h3>BOC Token Utility</h3>
+                <div class="utility-grid">
+                    <div class="utility-item">
+                        <div class="utility-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h4>Platform Fees</h4>
+                        <p>Pay for transaction fees, content uploads, and platform services</p>
+                    </div>
+                    <div class="utility-item">
+                        <div class="utility-icon">
+                            <i class="fas fa-vote-yea"></i>
+                        </div>
+                        <h4>Governance</h4>
+                        <p>Vote on platform upgrades, feature additions, and ecosystem decisions</p>
+                    </div>
+                    <div class="utility-item">
+                        <div class="utility-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h4>Staking Rewards</h4>
+                        <p>Stake BOC tokens to earn rewards and participate in network security</p>
+                    </div>
+                    <div class="utility-item">
+                        <div class="utility-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h4>Premium Features</h4>
+                        <p>Access exclusive features, priority support, and advanced tools</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vesting Schedule -->
+            <div class="vesting-schedule">
+                <h3>Token Vesting Schedule</h3>
+                <div class="vesting-table">
+                    <div class="table-header">
+                        <div class="header-cell">Category</div>
+                        <div class="header-cell">TGE Release</div>
+                        <div class="header-cell">Cliff Period</div>
+                        <div class="header-cell">Vesting Period</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="cell">Public Sale</div>
+                        <div class="cell">25%</div>
+                        <div class="cell">None</div>
+                        <div class="cell">25% monthly for 3 months</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="cell">Private Sale</div>
+                        <div class="cell">10%</div>
+                        <div class="cell">None</div>
+                        <div class="cell">15% monthly for 6 months</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="cell">Team & Advisors</div>
+                        <div class="cell">0%</div>
+                        <div class="cell">6 months</div>
+                        <div class="cell">12.5% quarterly for 2 years</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="cell">Ecosystem</div>
+                        <div class="cell">5%</div>
+                        <div class="cell">3 months</div>
+                        <div class="cell">Based on milestones</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <h2>Development Roadmap</h2>
+                <p>Our strategic plan to revolutionize entertainment blockchain</p>
+            </div>
+
+            <div class="roadmap-timeline">
+                <div class="timeline-item completed">
+                    <div class="timeline-date">Q4 2023</div>
+                    <div class="timeline-content">
+                        <h3>Foundation & Development</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Core blockchain architecture</li>
+                            <li><i class="fas fa-check"></i> Smart contract development</li>
+                            <li><i class="fas fa-check"></i> Security audits completed</li>
+                            <li><i class="fas fa-check"></i> Seed funding round</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item completed">
+                    <div class="timeline-date">Q1 2024</div>
+                    <div class="timeline-content">
+                        <h3>Token Launch & Partnerships</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Token generation event</li>
+                            <li><i class="fas fa-check"></i> Private sale completion</li>
+                            <li><i class="fas fa-check"></i> Strategic partnerships</li>
+                            <li><i class="fas fa-check"></i> Community building</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item active">
+                    <div class="timeline-date">Q2 2024</div>
+                    <div class="timeline-content">
+                        <h3>Public Sale & Platform Beta</h3>
+                        <ul>
+                            <li><i class="fas fa-fire"></i> Public token sale (Current)</li>
+                            <li><i class="fas fa-spinner fa-spin"></i> Beta platform launch</li>
+                            <li><i class="fas fa-clock"></i> NFT marketplace integration</li>
+                            <li><i class="fas fa-clock"></i> Creator onboarding program</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Q3 2024</div>
+                    <div class="timeline-content">
+                        <h3>Mainnet Launch</h3>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> Mainnet deployment</li>
+                            <li><i class="fas fa-clock"></i> Mobile app release</li>
+                            <li><i class="fas fa-clock"></i> Exchange listings</li>
+                            <li><i class="fas fa-clock"></i> Streaming platform integrations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Q4 2024</div>
+                    <div class="timeline-content">
+                        <h3>Ecosystem Expansion</h3>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> DeFi protocol launch</li>
+                            <li><i class="fas fa-clock"></i> Cross-chain bridges</li>
+                            <li><i class="fas fa-clock"></i> Gaming & VR integration</li>
+                            <li><i class="fas fa-clock"></i> Global expansion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Get answers to common questions about the BOC Chain token sale</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is BOC Chain and what problem does it solve?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>BOC Chain is a specialized blockchain platform designed for the entertainment industry. It solves key problems like content monetization, creator-fan engagement, and digital asset ownership by providing tools for tokenizing content, building communities, and enabling direct monetization without intermediaries.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I participate in the BOC token sale?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To participate, connect your Web3 wallet (MetaMask, Trust Wallet, etc.), choose your payment method (ETH, USDT, USDC, or BNB), enter your purchase amount (minimum $50), and confirm the transaction. Tokens are delivered instantly to your wallet.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are the current token sale phases and pricing?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We're currently in Phase 3 (Public Sale) at $0.18 per BOC token with a 10% bonus. Phase 1 (Seed) was $0.12, Phase 2 (Private) was $0.15, and the final Phase 4 will be $0.22. The listing price will be $0.25.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is the vesting schedule for purchased tokens?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Public sale tokens have 25% released at TGE (Token Generation Event), then 25% monthly for 3 months. Private sale tokens have 10% at TGE, then 15% monthly for 6 months. Team tokens have a 6-month cliff with quarterly releases over 2 years.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>When will BOC tokens be listed on exchanges?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>BOC tokens will be listed on major DEXs (Uniswap, PancakeSwap) immediately after TGE in Q3 2024. Major centralized exchange listings are planned within 30-60 days post-launch, with tier-1 exchanges targeted for Q4 2024.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What utility does the BOC token provide?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>BOC tokens serve multiple purposes: paying platform fees, governance voting, staking for rewards, accessing premium features, content monetization, NFT transactions, and participating in the creator economy ecosystem.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is there a minimum or maximum purchase limit?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The minimum purchase amount is $50 USD equivalent in any supported cryptocurrency. There is no maximum limit for individual purchases during the public sale phase.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How secure is the token sale smart contract?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our smart contracts have been audited by leading security firms including CertiK and Hacken. All audit reports are publicly available. The contracts use industry-standard security practices and have been tested extensively.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Don't Miss Out on the Entertainment Revolution</h2>
+                <p>Join thousands of investors who are already part of the BOC Chain ecosystem. Limited time offer with exclusive bonuses.</p>
+                
+                <div class="cta-stats">
+                    <div class="cta-stat">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">Days Remaining</span>
+                    </div>
+                    <div class="cta-stat">
+                        <span class="stat-number">$2.2M</span>
+                        <span class="stat-label">Left to Raise</span>
+                    </div>
+                    <div class="cta-stat">
+                        <span class="stat-number">10%</span>
+                        <span class="stat-label">Bonus Tokens</span>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="btn-primary large">
+                        <i class="fas fa-rocket"></i>
+                        Buy BOC Tokens Now
+                    </button>
+                    <button class="btn-secondary large">
+                        <i class="fab fa-telegram"></i>
+                        Join Community
+                    </button>
+                </div>
+
+                <div class="security-badges">
+                    <div class="badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Audited Smart Contracts</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure Transactions</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-users"></i>
+                        <span>12,847+ Investors</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop" alt="BOC Chain">
+                        <span>BOC Chain</span>
+                    </div>
+                    <p>Revolutionizing entertainment through blockchain technology. Building the future of creator economy and digital asset ownership.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Token Sale</h4>
+                    <a href="#sale-info">Sale Information</a>
+                    <a href="#how-to-buy">How to Buy</a>
+                    <a href="#tokenomics">Tokenomics</a>
+                    <a href="#">Vesting Schedule</a>
+                    <a href="#">Audit Reports</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#">Whitepaper</a>
+                    <a href="#">Pitch Deck</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                    <a href="#">Developer Tools</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal & Support</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Token Sale Agreement</a>
+                    <a href="#">Risk Disclosure</a>
+                    <a href="#">Support Center</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 BOC Chain. All rights reserved. Token sale subject to terms and conditions.</p>
+                <div class="footer-disclaimer">
+                    <p><strong>Risk Warning:</strong> Cryptocurrency investments carry significant risk. Please read our risk disclosure before participating.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sale.js"></script>
+</body>
+</html>

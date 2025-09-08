@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FanKoin - Entertainment Token Launchpad</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <span class="brand-text">FanKoin</span>
+            </div>
+            <div class="nav-links">
+                <a href="#trending">Trending</a>
+                <a href="create.html">Create Token</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#leaderboard">Leaderboard</a>
+                <button class="btn-connect-wallet" id="connectWallet">
+                    <i class="fas fa-wallet"></i>
+                    Connect Wallet
+                </button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Launch Fan Tokens for Entertainment</h1>
+                    <p class="hero-subtitle">Create, trade, and invest in fan tokens for your favorite artists, creators, and entertainment brands. The future of fan engagement is here.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">200 Million+</span>
+                            <span class="stat-label">Global Creators</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$1.487 Trillion</span>
+                            <span class="stat-label">Projected Market 2034</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100 Billion+Fans</span>
+                            <span class="stat-label">For Top 10000 Creators </span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="create.html" class="btn-primary large">
+                            <i class="fas fa-plus"></i>
+                            Create Fan Token
+                        </a>
+                        <button class="btn-secondary large" onclick="scrollToTrending()">
+                            <i class="fas fa-chart-line"></i>
+                            Explore Tokens
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="trending-preview">
+                        <h3>🔥 Trending Now</h3>
+                        <div class="trending-list">
+                            <div class="trending-item">
+                                <div class="token-info">
+                                    <img src="https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="Artist" class="token-avatar">
+                                    <div>
+                                        <div class="token-name">$TAYLOR</div>
+                                        <div class="token-desc">Taylor Swift Fan Token</div>
+                                    </div>
+                                </div>
+                                <div class="token-price">
+                                    <div class="price">$0.45</div>
+                                    <div class="change positive">+24.5%</div>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="token-info">
+                                    <img src="https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="Creator" class="token-avatar">
+                                    <div>
+                                        <div class="token-name">$BEAST</div>
+                                        <div class="token-desc">MrBeast Creator Token</div>
+                                    </div>
+                                </div>
+                                <div class="token-price">
+                                    <div class="price">$1.23</div>
+                                    <div class="change positive">+18.2%</div>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="token-info">
+                                    <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="Band" class="token-avatar">
+                                    <div>
+                                        <div class="token-name">$ROCK</div>
+                                        <div class="token-desc">Rock Band Collective</div>
+                                    </div>
+                                </div>
+                                <div class="token-price">
+                                    <div class="price">$0.78</div>
+                                    <div class="change positive">+12.8%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Categories -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Entertainment Categories</h2>
+                <p>Discover fan tokens across different entertainment verticals</p>
+            </div>
+            
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">All</button>
+                <button class="category-tab" data-category="music">🎵 Music</button>
+                <button class="category-tab" data-category="creators">📹 Creators</button>
+                <button class="category-tab" data-category="gaming">🎮 Gaming</button>
+                <button class="category-tab" data-category="sports">⚽ Sports</button>
+                <button class="category-tab" data-category="movies">🎬 Movies</button>
+                <button class="category-tab" data-category="comedy">😂 Comedy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Grid -->
+    <section class="token-grid" id="trending">
+        <div class="container">
+            <div class="grid-header">
+                <div class="grid-controls">
+                    <div class="sort-options">
+                        <select id="sortBy">
+                            <option value="volume">24h Volume</option>
+                            <option value="price">Price</option>
+                            <option value="change">% Change</option>
+                            <option value="marketcap">Market Cap</option>
+                            <option value="created">Recently Created</option>
+                        </select>
+                    </div>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+                        <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search fan tokens..." id="searchInput">
+                </div>
+            </div>
+
+            <div class="tokens-container" id="tokensContainer">
+                <!-- Tokens will be dynamically loaded here -->
+            </div>
+
+            <div class="load-more">
+                <button class="btn-secondary" onclick="loadMoreTokens()">Load More Tokens</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Create Token Modal -->
+    <div class="modal-overlay" id="createModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Create Fan Token</h3>
+                <button class="modal-close" onclick="closeCreateModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createTokenForm">
+                    <div class="form-group">
+                        <label>Token Avatar</label>
+                        <div class="avatar-upload">
+                            <div class="avatar-preview" id="avatarPreview">
+                                <i class="fas fa-camera"></i>
+                                <span>Upload Image</span>
+                            </div>
+                            <input type="file" id="avatarInput" accept="image/*" hidden>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Token Name</label>
+                            <input type="text" id="tokenName" placeholder="e.g., Taylor Swift Fan Token" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Token Symbol</label>
+                            <input type="text" id="tokenSymbol" placeholder="e.g., TAYLOR" maxlength="10" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="tokenCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="music">🎵 Music Artist</option>
+                            <option value="creators">📹 Content Creator</option>
+                            <option value="gaming">🎮 Gaming</option>
+                            <option value="sports">⚽ Sports</option>
+                            <option value="movies">🎬 Movies/TV</option>
+                            <option value="comedy">😂 Comedy</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="tokenDescription" placeholder="Describe your fan token and what holders will get..." rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Initial Supply</label>
+                            <input type="number" id="initialSupply" placeholder="1000000" min="1000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Initial Price (FANKOINS)</label>
+                            <input type="number" id="initialPrice" placeholder="0.001" step="0.0001" min="0.0001" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Social Links (Optional)</label>
+                        <div class="social-inputs">
+                            <input type="url" id="twitterLink" placeholder="Twitter URL">
+                            <input type="url" id="instagramLink" placeholder="Instagram URL">
+                            <input type="url" id="websiteLink" placeholder="Website URL">
+                        </div>
+                    </div>
+                    
+                    <div class="creation-cost">
+                        <div class="cost-breakdown">
+                            <div class="cost-item">
+                                <span>Creation Fee:</span>
+                                <span>0.01 ETH</span>
+                            </div>
+                            <div class="cost-item">
+                                <span>Initial Liquidity:</span>
+                                <span id="liquidityAmount">0.001 ETH</span>
+                            </div>
+                            <div class="cost-item total">
+                                <span>Total Cost:</span>
+                                <span id="totalCost">0.011 ETH</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary full-width">
+                        <i class="fas fa-rocket"></i>
+                        Create Fan Token
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Token Detail Modal -->
+    <div class="modal-overlay" id="tokenModal">
+        <div class="modal large">
+            <div class="modal-header">
+                <div class="token-header-info">
+                    <img src="" alt="" class="token-modal-avatar" id="modalTokenAvatar">
+                    <div>
+                        <h3 id="modalTokenName">Token Name</h3>
+                        <span class="token-symbol" id="modalTokenSymbol">$SYMBOL</span>
+                    </div>
+                </div>
+                <button class="modal-close" onclick="closeTokenModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="token-detail-content">
+                    <div class="token-chart-section">
+                        <div class="price-info">
+                            <div class="current-price">
+                                <span class="price-label">Current Price</span>
+                                <span class="price-value" id="modalTokenPrice">$0.00</span>
+                                <span class="price-change" id="modalTokenChange">+0.00%</span>
+                            </div>
+                            <div class="token-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Market Cap</span>
+                                    <span class="stat-value" id="modalMarketCap">$0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">24h Volume</span>
+                                    <span class="stat-value" id="modalVolume">$0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Holders</span>
+                                    <span class="stat-value" id="modalHolders">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-placeholder">
+                            <canvas id="priceChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="trading-section">
+                        <div class="trade-tabs">
+                            <button class="trade-tab active" data-tab="buy">Buy</button>
+                            <button class="trade-tab" data-tab="sell">Sell</button>
+                        </div>
+                        
+                        <div class="trade-form" id="buyForm">
+                            <div class="trade-input-group">
+                                <label>Amount (ETH)</label>
+                                <div class="input-with-max">
+                                    <input type="number" id="buyAmount" placeholder="0.1" step="0.001">
+                                    <button class="max-btn" onclick="setMaxBuy()">MAX</button>
+                                </div>
+                            </div>
+                            <div class="trade-estimate">
+                                <div class="estimate-row">
+                                    <span>You'll receive:</span>
+                                    <span id="buyEstimate">0 tokens</span>
+                                </div>
+                                <div class="estimate-row">
+                                    <span>Price impact:</span>
+                                    <span id="buyPriceImpact">0.00%</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary full-width" onclick="executeBuy()">
+                                <i class="fas fa-arrow-up"></i>
+                                Buy Tokens
+                            </button>
+                        </div>
+                        
+                        <div class="trade-form hidden" id="sellForm">
+                            <div class="trade-input-group">
+                                <label>Amount (Tokens)</label>
+                                <div class="input-with-max">
+                                    <input type="number" id="sellAmount" placeholder="100" step="1">
+                                    <button class="max-btn" onclick="setMaxSell()">MAX</button>
+                                </div>
+                            </div>
+                            <div class="trade-estimate">
+                                <div class="estimate-row">
+                                    <span>You'll receive:</span>
+                                    <span id="sellEstimate">0 ETH</span>
+                                </div>
+                                <div class="estimate-row">
+                                    <span>Price impact:</span>
+                                    <span id="sellPriceImpact">0.00%</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary full-width" onclick="executeSell()">
+                                <i class="fas fa-arrow-down"></i>
+                                Sell Tokens
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="token-description">
+                    <h4>About</h4>
+                    <p id="modalTokenDescription">Token description will appear here...</p>
+                </div>
+                
+                <div class="token-social-links" id="modalSocialLinks">
+                    <!-- Social links will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <span>FanKoin</span>
+                    </div>
+                    <p>The premier platform for creating and trading entertainment fan tokens. Empowering creators and fans through blockchain technology.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <a href="#trending">Trending Tokens</a>
+                    <a href="#create">Create Token</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#leaderboard">Leaderboard</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">API</a>
+                    <a href="#">Tutorials</a>
+                    <a href="#">Support</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Risk Disclosure</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 FanKoin Dao.Trading involves risk.</p> Made with Love and passion for the enterainment industry by Businessofcinema -
+                <div class="footer-disclaimer">
+                    <p><strong>Risk Warning:</strong> Fan Koins are highly volatile. Only invest what you can afford to lose.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

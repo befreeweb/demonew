@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Fan Token - FanKoin</title>
+    <link rel="stylesheet" href="create.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <span class="brand-text">FanPump</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#trending">Trending</a>
+                <a href="create.html" class="active">Create Token</a>
+                <a
+href="#portfolio">Portfolio</a>
+                <a href="#leaderboard">Leaderboard</a>
+                <button class="btn-connect-wallet" id="connectWallet">
+                    <i class="fas fa-wallet"></i>
+                    Connect Wallet
+                </button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Create Your Fan Token</h1>
+                <p class="hero-subtitle">Launch your entertainment token in minutes. Connect with fans, monetize your content, and build your community.</p>
+                
+                <div class="creation-stats">
+                    <div class="stat">
+                        <span class="stat-number">847</span>
+                        <span class="stat-label">Tokens Created</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$2.4M</span>
+                        <span class="stat-label">Total Volume</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">12.5K</span>
+                        <span class="stat-label">Active Traders</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Creation Form -->
+    <section class="token-creation">
+        <div class="container">
+            <div class="creation-layout">
+                <!-- Form Section -->
+                <div class="creation-form">
+                    <div class="form-header">
+                        <h2>Token Details</h2>
+                        <p>Fill in the information about your fan token</p>
+                    </div>
+
+                    <form id="tokenCreationForm">
+                        <!-- Token Avatar -->
+                        <div class="form-group">
+                            <label>Token Avatar</label>
+                            <div class="avatar-upload-section">
+                                <div class="avatar-preview" id="avatarPreview">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Upload Image</span>
+                                    <small>Recommended: 400x400px</small>
+                                </div>
+                                <input type="file" id="avatarInput" accept="image/*" hidden>
+                                <button type="button" class="btn-upload" onclick="document.getElementById('avatarInput').click()">
+                                    <i class="fas fa-upload"></i>
+                                    Choose File
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Basic Info -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Token Name *</label>
+                                <input type="text" id="tokenName" placeholder="e.g., Taylor Swift Fan Token" required>
+                                <small>The full name of your fan token</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Token Symbol *</label>
+                                <input type="text" id="tokenSymbol" placeholder="e.g., TAYLOR" maxlength="10" required>
+                                <small>3-10 characters, will be prefixed with $</small>
+                            </div>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="form-group">
+                            <label>Category *</label>
+                            <div class="category-selector">
+                                <div class="category-option" data-category="music">
+                                    <i class="fas fa-music"></i>
+                                    <span>Music Artist</span>
+                                </div>
+                                <div class="category-option" data-category="creators">
+                                    <i class="fas fa-video"></i>
+                                    <span>Content Creator</span>
+                                </div>
+                                <div class="category-option" data-category="gaming">
+                                    <i class="fas fa-gamepad"></i>
+                                    <span>Gaming</span>
+                                </div>
+                                <div class="category-option" data-category="sports">
+                                    <i class="fas fa-futbol"></i>
+                                    <span>Sports</span>
+                                </div>
+                                <div class="category-option" data-category="movies">
+                                    <i class="fas fa-film"></i>
+                                    <span>Movies/TV</span>
+                                </div>
+                                <div class="category-option" data-category="comedy">
+                                    <i class="fas fa-laugh"></i>
+                                    <span>Comedy</span>
+                                </div>
+                            </div>
+                            <input type="hidden" id="selectedCategory" required>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label>Description *</label>
+                            <textarea id="tokenDescription" placeholder="Describe your fan token, what holders will get, exclusive benefits, etc..." rows="4" required></textarea>
+                            <div class="char-counter">
+                                <span id="charCount">0</span>/500 characters
+                            </div>
+                        </div>
+
+                        <!-- Token Economics -->
+                        <div class="form-section">
+                            <h3>Token Economics</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Initial Supply *</label>
+                                    <input type="number" id="initialSupply" placeholder="1000000" min="1000" max="1000000000" required>
+                                    <small>Total number of tokens to create</small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Initial Price (ETH) *</label>
+                                    <input type="number" id="initialPrice" placeholder="0.001" step="0.0001" min="0.0001" max="1" required>
+                                    <small>Starting price per token</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="form-section">
+                            <h3>Social Links (Optional)</h3>
+                            <div class="social-inputs">
+                                <div class="social-input">
+                                    <i class="fab fa-twitter"></i>
+                                    <input type="url" id="twitterLink" placeholder="https://twitter.com/username">
+                                </div>
+                                <div class="social-input">
+                                    <i class="fab fa-instagram"></i>
+                                    <input type="url" id="instagramLink" placeholder="https://instagram.com/username">
+                                </div>
+                                <div class="social-input">
+                                    <i class="fab fa-youtube"></i>
+                                    <input type="url" id="youtubeLink" placeholder="https://youtube.com/@username">
+                                </div>
+                                <div class="social-input">
+                                    <i class="fas fa-globe"></i>
+                                    <input type="url" id="websiteLink" placeholder="https://yourwebsite.com">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fan Benefits -->
+                        <div class="form-section">
+                            <h3>Fan Benefits</h3>
+                            <p class="section-desc">What exclusive benefits will token holders receive?</p>
+                            <div class="benefits-selector">
+                                <label class="benefit-checkbox">
+                                    <input type="checkbox" value="exclusive-content">
+                                    <span class="checkmark"></span>
+                                    <div class="benefit-info">
+                                        <strong>Exclusive Content</strong>
+                                        <small>Early access to new releases, behind-the-scenes content</small>
+                                    </div>
+                                </label>
+                                <label class="benefit-checkbox">
+                                    <input type="checkbox" value="meet-greet">
+                                    <span class="checkmark"></span>
+                                    <div class="benefit-info">
+                                        <strong>Meet & Greets</strong>
+                                        <small>Virtual or in-person meetings with fans</small>
+                                    </div>
+                                </label>
+                                <label class="benefit-checkbox">
+                                    <input type="checkbox" value="merchandise">
+                                    <span class="checkmark"></span>
+                                    <div class="benefit-info">
+                                        <strong>Exclusive Merchandise</strong>
+                                        <small>Limited edition items only for token holders</small>
+                                    </div>
+                                </label>
+                                <label class="benefit-checkbox">
+                                    <input type="checkbox" value="events">
+                                    <span class="checkmark"></span>
+                                    <div class="benefit-info">
+                                        <strong>VIP Events</strong>
+                                        <small>Priority access to concerts, shows, and events</small>
+                                    </div>
+                                </label>
+                                <label class="benefit-checkbox">
+                                    <input type="checkbox" value="voting">
+                                    <span class="checkmark"></span>
+                                    <div class="benefit-info">
+                                        <strong>Fan Voting</strong>
+                                        <small>Vote on creative decisions, setlists, content</small>
+                                    </div>
+                                </label>
+                                <label class="benefit-checkbox">
+                                    <input type="checkbox" value="discord">
+                                    <span class="checkmark"></span>
+                                    <div class="benefit-info">
+                                        <strong>VIP Discord</strong>
+                                        <small>Access to exclusive Discord channels</small>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Creation Button -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn-create-token" id="createTokenBtn">
+                                <i class="fas fa-rocket"></i>
+                                <span>Create Fan Token</span>
+                                <div class="btn-loading" id="btnLoading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="token-preview">
+                    <div class="preview-header">
+                        <h3>Token Preview</h3>
+                        <p>See how your token will appear</p>
+                    </div>
+
+                    <div class="preview-card" id="previewCard">
+                        <div class="preview-category" id="previewCategory">Select Category</div>
+                        <div class="preview-avatar" id="previewAvatar">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="preview-info">
+                            <h4 id="previewName">Token Name</h4>
+                            <div class="preview-symbol" id="previewSymbol">$SYMBOL</div>
+                        </div>
+                        <div class="preview-description" id="previewDescription">
+                            Token description will appear here...
+                        </div>
+                        <div class="preview-stats">
+                            <div class="preview-stat">
+                                <span class="stat-value" id="previewPrice">$0.001</span>
+                                <span class="stat-label">Price</span>
+                            </div>
+                            <div class="preview-stat">
+                                <span class="stat-value" id="previewSupply">1M</span>
+                                <span class="stat-label">Supply</span>
+                            </div>
+                            <div class="preview-stat">
+                                <span class="stat-value" id="previewMarketCap">$1K</span>
+                                <span class="stat-label">Market Cap</span>
+                            </div>
+                        </div>
+                        <div class="preview-benefits" id="previewBenefits">
+                            <div class="benefits-title">Fan Benefits:</div>
+                            <div class="benefits-list" id="benefitsList">
+                                Select benefits above
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cost Breakdown -->
+                    <div class="cost-breakdown">
+                        <h4>Creation Cost</h4>
+                        <div class="cost-items">
+                            <div class="cost-item">
+                                <span>Platform Fee:</span>
+                                <span>0.01 ETH</span>
+                            </div>
+                            <div class="cost-item">
+                                <span>Initial Liquidity:</span>
+                                <span id="liquidityCost">0.001 ETH</span>
+                            </div>
+                            <div class="cost-item">
+                                <span>Gas Estimate:</span>
+                                <span>~0.005 ETH</span>
+                            </div>
+                            <div class="cost-item total">
+                                <span>Total Cost:</span>
+                                <span id="totalCost">~0.016 ETH</span>
+                            </div>
+                        </div>
+                        <div class="cost-note">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Gas fees may vary based on network congestion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal success-modal">
+            <div class="modal-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Token Created Successfully!</h3>
+                <p>Your fan token has been deployed to the blockchain</p>
+                <div class="token-details" id="createdTokenDetails">
+                    <!-- Token details will be populated here -->
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-primary" onclick="viewToken()">View Token</button>
+                    <button class="btn-secondary" onclick="createAnother()">Create Another</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <span>FanPump</span>
+                    </div>
+                    <p>The premier platform for creating and trading entertainment fan tokens.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <a href="index.html">Home</a>
+                    <a href="create.html">Create Token</a>
+                    <a href="#trending">Trending</a>
+                    <a href="#portfolio">Portfolio</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">API</a>
+                    <a href="#">Support</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Risk Disclosure</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FanPump. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="create.js"></script>
+</body>
+</html>
