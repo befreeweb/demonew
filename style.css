@@ -256,8 +256,8 @@ body {
     gap: 1rem;
 }
 
-/* Trending Preview */
-.trending-preview {
+/* Charity Auction Preview */
+.charity-auction-preview {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -267,7 +267,7 @@ body {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.trending-preview h3 {
+.charity-auction-preview h3 {
     margin-bottom: 1.5rem;
     font-size: 1.25rem;
     text-align: center;
@@ -277,101 +277,158 @@ body {
     background-clip: text;
 }
 
-.trending-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.trending-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
+.charity-auction-card {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(233, 30, 99, 0.3);
 }
 
-.trending-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-.token-info {
+.charity-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.token-avatar {
-    width: 40px;
-    height: 40px;
+.charity-avatar {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid rgba(233, 30, 99, 0.5);
 }
 
-.token-name {
+.charity-info {
+    flex: 1;
+}
+
+.charity-name {
     font-weight: 600;
     color: #fff;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
 }
 
-.token-desc {
+.charity-symbol {
+    color: #e91e63;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.charity-cause {
     color: #ccc;
     font-size: 0.8rem;
 }
 
-.token-price {
-    text-align: right;
+.charity-details {
+    display: grid;
+    gap: 1.5rem;
 }
 
-.price {
-    font-weight: 600;
-    color: #fff;
-    font-size: 0.95rem;
-}
-
-.change {
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.change.positive {
-    color: #4ade80;
-}
-
-.change.negative {
-    color: #f87171;
-}
-
-/* Auction Timer */
-.auction-timer {
-    margin-top: 1.5rem;
-    padding: 1rem;
+.current-bid {
+    text-align: center;
     background: rgba(233, 30, 99, 0.1);
     border: 1px solid rgba(233, 30, 99, 0.3);
     border-radius: 12px;
-    text-align: center;
+    padding: 1rem;
 }
 
-.timer-info {
+.bid-label {
+    display: block;
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.bid-amount {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #e91e63;
+    margin-bottom: 0.25rem;
+}
+
+.bid-count {
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.charity-timer {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.timer-unit {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.75rem 0.5rem;
+    min-width: 50px;
+}
+
+.time-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #e91e63;
+    font-family: 'Courier New', monospace;
+}
+
+.time-label {
+    font-size: 0.7rem;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.charity-benefits {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.benefit-title {
     color: #e91e63;
     font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
 }
 
-.countdown-timer {
-    font-size: 1.1rem;
-    font-family: 'Courier New', monospace;
-    color: #fff;
+.benefit-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefit-list li {
+    color: #ccc;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.btn-bid-charity {
+    width: 100%;
     background: linear-gradient(135deg, #e91e63, #9c27b0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-bid-charity:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
 }
 
 /* Categories */
@@ -658,6 +715,276 @@ body {
 
 .load-more {
     text-align: center;
+}
+
+/* Token Swap Section */
+.token-swap-section {
+    padding: 4rem 0;
+    background: #111;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.swap-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
+}
+
+.swap-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.swap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.swap-header h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.settings-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e91e63;
+}
+
+.swap-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.swap-input-group {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.swap-input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.swap-input-header span:first-child {
+    color: #ccc;
+    font-weight: 500;
+}
+
+.balance {
+    color: #e91e63;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.balance:hover {
+    text-decoration: underline;
+}
+
+.swap-input-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.swap-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    outline: none;
+}
+
+.swap-input::placeholder {
+    color: #666;
+}
+
+.token-select-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 8px 12px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.token-select-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #e91e63;
+}
+
+.token-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.swap-arrow {
+    display: flex;
+    justify-content: center;
+    margin: -0.5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.swap-arrow-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ccc;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swap-arrow-btn:hover {
+    background: rgba(233, 30, 99, 0.2);
+    border-color: #e91e63;
+    color: #e91e63;
+    transform: rotate(180deg);
+}
+
+.swap-details {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.detail-row span:first-child {
+    color: #ccc;
+}
+
+.detail-row span:last-child {
+    color: #fff;
+    font-weight: 600;
+}
+
+.positive {
+    color: #4ade80 !important;
+}
+
+.negative {
+    color: #f87171 !important;
+}
+
+.btn-swap {
+    width: 100%;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.btn-swap:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
+}
+
+.btn-swap:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.swap-info {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    height: fit-content;
+}
+
+.swap-info h4 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.swap-features {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.swap-features .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.swap-features .feature-item i {
+    color: #e91e63;
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+.swap-features .feature-item strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.swap-features .feature-item p {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin: 0;
 }
 
 /* Modals */
@@ -1062,6 +1389,401 @@ body {
     transform: translateY(-2px);
 }
 
+/* Wallet Modal */
+.wallet-content {
+    display: grid;
+    gap: 2rem;
+}
+
+.wallet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.wallet-address {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wallet-address-text {
+    font-family: 'Courier New', monospace;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.copy-btn {
+    background: rgba(233, 30, 99, 0.2);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    color: #e91e63;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.copy-btn:hover {
+    background: rgba(233, 30, 99, 0.3);
+}
+
+.wallet-balance {
+    text-align: right;
+}
+
+.balance-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e91e63;
+    display: block;
+}
+
+.balance-label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.wallet-tokens {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.wallet-tokens h4 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.token-list-wallet {
+    display: grid;
+    gap: 1rem;
+}
+
+.wallet-token-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.wallet-token-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.wallet-token-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.wallet-token-info {
+    flex: 1;
+}
+
+.wallet-token-name {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.wallet-token-symbol {
+    color: #e91e63;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.wallet-token-balance {
+    text-align: right;
+}
+
+.token-amount {
+    color: #fff;
+    font-weight: 600;
+    display: block;
+}
+
+.token-value {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.empty-wallet {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #ccc;
+}
+
+.empty-wallet i {
+    font-size: 3rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.empty-wallet h4 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+/* Charity Bid Modal */
+.charity-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.charity-bid-content {
+    display: grid;
+    gap: 2rem;
+}
+
+.charity-cause-info {
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.charity-cause-info h4 {
+    color: #e91e63;
+    margin-bottom: 1rem;
+}
+
+.charity-cause-info p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.current-bid-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.bid-info {
+    text-align: center;
+}
+
+.bid-amount-large {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #e91e63;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.bidder-count {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.charity-timer-large {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.charity-timer-large .timer-unit {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 1rem 0.75rem;
+    min-width: 60px;
+}
+
+.charity-timer-large .time-value {
+    font-size: 1.5rem;
+}
+
+.bid-form {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.bid-input-group {
+    margin-bottom: 2rem;
+}
+
+.bid-input-group label {
+    display: block;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.bid-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 15px;
+    color: #e91e63;
+    font-weight: 600;
+    font-size: 1.25rem;
+    z-index: 1;
+}
+
+.bid-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 15px 15px 15px 35px;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: border-color 0.3s ease;
+}
+
+.bid-input:focus {
+    outline: none;
+    border-color: #e91e63;
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+}
+
+.minimum-bid-info {
+    margin-top: 0.5rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.minimum-bid-info strong {
+    color: #e91e63;
+}
+
+.charity-benefits h5 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.charity-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.charity-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.charity-benefits li i {
+    color: #e91e63;
+    width: 16px;
+}
+
+.btn-place-charity-bid {
+    width: 100%;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-place-charity-bid:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
+}
+
+/* Token Selector Modal */
+.token-search {
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #e91e63;
+}
+
+.search-input::placeholder {
+    color: #666;
+}
+
+.token-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.token-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.token-option:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.token-option-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.token-option-info {
+    flex: 1;
+}
+
+.token-option-name {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.token-option-symbol {
+    color: #e91e63;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.token-option-balance {
+    text-align: right;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
 /* Footer */
 .footer {
     background: #0a0a0a;
@@ -1165,9 +1887,27 @@ body {
         flex-wrap: wrap;
     }
     
-    .trending-preview {
+    .charity-auction-preview {
         max-width: 400px;
         margin: 0 auto;
+    }
+    
+    .swap-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .current-bid-display {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .charity-timer {
+        gap: 0.5rem;
+    }
+    
+    .charity-timer-large {
+        gap: 0.5rem;
     }
     
     .category-tabs {
