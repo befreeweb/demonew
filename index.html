@@ -60,6 +60,12 @@ body {
     font-size: 1.5rem;
     font-weight: 800;
     color: #fff;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
@@ -91,6 +97,25 @@ body {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+.btn-connect-wallet {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-connect-wallet:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
 }
 
 .mobile-menu-toggle {
@@ -137,7 +162,7 @@ body {
 }
 
 .btn-primary:active {
-    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+    transform: translateY(0);
 }
 
 .btn-secondary {
@@ -187,7 +212,7 @@ body {
     color: #fff;
     margin-bottom: 1rem;
     line-height: 1.2;
-    background: linear-gradient(135deg, #fff, #e91e63);
+    background: linear-gradient(135deg, #fff, #ff6b6b);
     background: linear-gradient(135deg, #fff, #e91e63);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -215,7 +240,7 @@ body {
     display: block;
     font-size: 2rem;
     font-weight: 700;
-    color: #e91e63;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -320,15 +345,9 @@ body {
 .bid-amount {
     display: block;
     font-size: 1.5rem;
-    color: #e91e63;
+    font-weight: 600;
     color: #e91e63;
     margin-bottom: 0.25rem;
-}
-
-.bid-currency-alt {
-    color: #e91e63;
-    font-size: 0.9rem;
-    margin-left: 0.5rem;
 }
 
 .bid-count {
@@ -1398,7 +1417,7 @@ body {
 }
 
 .copy-btn {
-    background: rgba(233, 30, 99, 0.1);
+    background: rgba(233, 30, 99, 0.2);
     border: 1px solid rgba(233, 30, 99, 0.3);
     color: #e91e63;
     padding: 6px 12px;
@@ -1590,14 +1609,14 @@ body {
     border-radius: 12px;
     padding: 2rem;
 }
-    background: rgba(233, 30, 99, 0.1);
-    border: 1px solid rgba(233, 30, 99, 0.3);
+
+.bid-input-group {
     margin-bottom: 2rem;
 }
 
 .bid-input-group label {
     display: block;
-    color: #e91e63;
+    color: #fff;
     font-weight: 600;
     margin-bottom: 1rem;
 }
@@ -1669,115 +1688,6 @@ body {
 .charity-benefits li i {
     color: #e91e63;
     width: 16px;
-}
-
-/* Portfolio Modal */
-.portfolio-modal {
-    max-width: 600px;
-}
-
-.portfolio-summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-}
-
-.portfolio-stat {
-    text-align: center;
-}
-
-.portfolio-stat .stat-label {
-    color: #ccc;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-.portfolio-stat .stat-value {
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.portfolio-tokens {
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.empty-portfolio {
-    text-align: center;
-    padding: 3rem 2rem;
-    color: #ccc;
-}
-
-.empty-portfolio i {
-    font-size: 3rem;
-    color: #666;
-    margin-bottom: 1rem;
-}
-
-.empty-portfolio h4 {
-    color: #fff;
-    margin-bottom: 0.5rem;
-}
-
-.portfolio-token {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    margin-bottom: 1rem;
-}
-
-.portfolio-token-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(233, 30, 99, 0.3);
-}
-
-.portfolio-token-info {
-    flex: 1;
-}
-
-.portfolio-token-info h4 {
-    color: #fff;
-    margin-bottom: 0.25rem;
-}
-
-.portfolio-token-symbol {
-    color: #e91e63;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.portfolio-token-stats {
-    text-align: right;
-}
-
-.portfolio-token-value {
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.portfolio-token-pnl {
-    font-size: 0.8rem;
-}
-
-.portfolio-token-pnl.positive {
-    color: #4ade80;
-}
-
-.portfolio-token-pnl.negative {
-    color: #f87171;
 }
 
 .btn-place-charity-bid {
