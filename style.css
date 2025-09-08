@@ -271,6 +271,10 @@ body {
     margin-bottom: 1.5rem;
     font-size: 1.25rem;
     text-align: center;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .trending-list {
@@ -340,6 +344,34 @@ body {
 
 .change.negative {
     color: #f87171;
+}
+
+/* Auction Timer */
+.auction-timer {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.timer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #e91e63;
+    font-weight: 600;
+}
+
+.countdown-timer {
+    font-size: 1.1rem;
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Categories */

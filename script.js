@@ -2,12 +2,12 @@
 const sampleTokens = [
     {
         id: 1,
-        name: "Taylor Swift Fan Token",
+        name: "Taylor Swift",
         symbol: "TAYLOR",
         category: "music",
-        description: "Official fan token for Taylor Swift supporters. Get exclusive access to concerts, merchandise, and fan experiences.",
+        description: "Official fan token for Taylor Swift supporters. Get exclusive access to concerts, merchandise, and fan experiences. Price: 1.25 FanKoin",
         avatar: "https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
-        price: 0.45,
+        price: 1.25,
         change: 24.5,
         volume: 125000,
         marketCap: 2250000,
@@ -21,12 +21,12 @@ const sampleTokens = [
     },
     {
         id: 2,
-        name: "MrBeast Creator Token",
+        name: "MrBeast",
         symbol: "BEAST",
         category: "creators",
-        description: "Support MrBeast's philanthropic missions and get early access to challenge participation and exclusive content.",
+        description: "Support MrBeast's philanthropic missions and get early access to challenge participation and exclusive content. Price: 2.10 FanKoin",
         avatar: "https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
-        price: 1.23,
+        price: 2.10,
         change: 18.2,
         volume: 89000,
         marketCap: 1845000,
@@ -40,12 +40,12 @@ const sampleTokens = [
     },
     {
         id: 3,
-        name: "Rock Band Collective",
+        name: "Dwayne 'The Rock' Johnson",
         symbol: "ROCK",
-        category: "music",
-        description: "A collective token representing multiple rock bands. Holders get access to exclusive concerts and backstage passes.",
+        category: "movies",
+        description: "Official token for Dwayne Johnson fans. Get access to movie premieres, exclusive content, and meet & greets. Price: 3.50 FanKoin",
         avatar: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
-        price: 0.78,
+        price: 3.50,
         change: 12.8,
         volume: 67000,
         marketCap: 890000,
@@ -58,12 +58,12 @@ const sampleTokens = [
     },
     {
         id: 4,
-        name: "Gaming Streamer Alliance",
-        symbol: "GAME",
+        name: "PewDiePie",
+        symbol: "PEWDS",
         category: "gaming",
-        description: "Token for top gaming streamers. Get access to exclusive gaming sessions, tournaments, and early game releases.",
+        description: "Official PewDiePie fan token. Get access to exclusive gaming sessions, tournaments, and early game releases. Price: 1.85 FanKoin",
         avatar: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
-        price: 0.92,
+        price: 1.85,
         change: -5.3,
         volume: 45000,
         marketCap: 1120000,
@@ -76,12 +76,12 @@ const sampleTokens = [
     },
     {
         id: 5,
-        name: "Comedy Central Token",
-        symbol: "LAUGH",
+        name: "Kevin Hart",
+        symbol: "HART",
         category: "comedy",
-        description: "Official token for comedy content creators. Access exclusive stand-up shows, comedy specials, and meet & greets.",
+        description: "Official Kevin Hart fan token. Access exclusive stand-up shows, comedy specials, and meet & greets. Price: 2.75 FanKoin",
         avatar: "https://images.pexels.com/photos/1115816/pexels-photo-1115816.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
-        price: 0.34,
+        price: 2.75,
         change: 8.7,
         volume: 32000,
         marketCap: 456000,
@@ -94,12 +94,12 @@ const sampleTokens = [
     },
     {
         id: 6,
-        name: "Sports Fan United",
-        symbol: "SPORT",
+        name: "Cristiano Ronaldo",
+        symbol: "CR7",
         category: "sports",
-        description: "Multi-sport fan token giving access to exclusive sports content, athlete meet & greets, and VIP game experiences.",
+        description: "Official Cristiano Ronaldo fan token. Get access to exclusive sports content, athlete meet & greets, and VIP game experiences. Price: 4.20 FanKoin",
         avatar: "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
-        price: 1.56,
+        price: 4.20,
         change: 15.4,
         volume: 78000,
         marketCap: 1890000,
@@ -239,7 +239,7 @@ function createTokenCard(token) {
     const changeSymbol = token.change >= 0 ? '+' : '';
     
     card.innerHTML = `
-        <div class="token-card-category">${getCategoryEmoji(token.category)} ${token.category}</div>
+        <div class="token-card-category">${getCategoryEmoji(token.category)} ${getCategoryName(token.category)}</div>
         <div class="token-card-header">
             <img src="${token.avatar}" alt="${token.name}" class="token-card-avatar">
             <div class="token-card-info">
@@ -260,7 +260,7 @@ function createTokenCard(token) {
         </div>
         <div class="token-card-footer">
             <div class="token-price-info">
-                <div class="token-current-price">$${token.price.toFixed(3)}</div>
+                <div class="token-current-price">${token.price.toFixed(2)} FanKoin</div>
                 <div class="token-price-change ${changeClass}">${changeSymbol}${token.change.toFixed(1)}%</div>
             </div>
             <div class="token-actions">
@@ -332,7 +332,7 @@ function openTokenModal(token) {
     document.getElementById('modalTokenAvatar').src = token.avatar;
     document.getElementById('modalTokenName').textContent = token.name;
     document.getElementById('modalTokenSymbol').textContent = `$${token.symbol}`;
-    document.getElementById('modalTokenPrice').textContent = `$${token.price.toFixed(3)}`;
+    document.getElementById('modalTokenPrice').textContent = `${token.price.toFixed(2)} FanKoin`;
     
     const changeClass = token.change >= 0 ? 'positive' : 'negative';
     const changeSymbol = token.change >= 0 ? '+' : '';
@@ -437,34 +437,34 @@ function handleAvatarUpload(e) {
 
 // Trading Functions
 function calculateBuyEstimate() {
-    const amount = parseFloat(document.getElementById('buyAmount').value) || 0;
-    const currentPrice = 0.45; // This would come from the selected token
-    const tokens = amount / currentPrice;
-    const priceImpact = Math.min(amount * 0.1, 5); // Simple price impact calculation
+    const fanKoinAmount = parseFloat(document.getElementById('buyAmount').value) || 0;
+    const currentPrice = 1.25; // This would come from the selected token (in FanKoin)
+    const tokens = fanKoinAmount / currentPrice;
+    const priceImpact = Math.min(fanKoinAmount * 0.1, 5); // Simple price impact calculation
     
-    document.getElementById('buyEstimate').textContent = `${tokens.toFixed(0)} tokens`;
+    document.getElementById('buyEstimate').textContent = `${tokens.toFixed(0)} tokens (1 FanKoin = $1)`;
     document.getElementById('buyPriceImpact').textContent = `${priceImpact.toFixed(2)}%`;
 }
 
 function calculateSellEstimate() {
     const tokens = parseFloat(document.getElementById('sellAmount').value) || 0;
-    const currentPrice = 0.45; // This would come from the selected token
-    const ethAmount = tokens * currentPrice;
+    const currentPrice = 1.25; // This would come from the selected token (in FanKoin)
+    const fanKoinAmount = tokens * currentPrice;
     const priceImpact = Math.min(tokens * 0.0001, 5); // Simple price impact calculation
     
-    document.getElementById('sellEstimate').textContent = `${ethAmount.toFixed(4)} ETH`;
+    document.getElementById('sellEstimate').textContent = `${fanKoinAmount.toFixed(2)} FanKoin`;
     document.getElementById('sellPriceImpact').textContent = `${priceImpact.toFixed(2)}%`;
 }
 
 function setMaxBuy() {
     // Simulate max wallet balance
-    document.getElementById('buyAmount').value = '1.0';
+    document.getElementById('buyAmount').value = '100.0';
     calculateBuyEstimate();
 }
 
 function setMaxSell() {
     // Simulate max token balance
-    document.getElementById('sellAmount').value = '1000';
+    document.getElementById('sellAmount').value = '50';
     calculateSellEstimate();
 }
 
@@ -537,6 +537,18 @@ function getCategoryEmoji(category) {
         comedy: '😂'
     };
     return emojis[category] || '🎯';
+}
+
+function getCategoryName(category) {
+    const names = {
+        music: 'Music Artists',
+        creators: 'Content Creators',
+        gaming: 'Gaming Streamers',
+        sports: 'Sports Stars',
+        movies: 'Movie Stars',
+        comedy: 'Comedians'
+    };
+    return names[category] || category;
 }
 
 function formatNumber(num) {
@@ -662,8 +674,35 @@ function updateStats() {
 }
 
 function scrollToTrending() {
-    document.getElementById('trending').scrollIntoView({ behavior: 'smooth' });
+    // Instead of scrolling to trending, show download wallet modal or redirect
+    showNotification('Download FanKoin Wallet to start trading! Visit fankoin.com/wallet', 'info');
 }
+
+// Add auction countdown timer
+function startAuctionTimer() {
+    const timerElement = document.querySelector('.countdown-timer');
+    if (!timerElement) return;
+    
+    let timeLeft = 23 * 3600 + 45 * 60 + 12; // 23:45:12 in seconds
+    
+    setInterval(() => {
+        const hours = Math.floor(timeLeft / 3600);
+        const minutes = Math.floor((timeLeft % 3600) / 60);
+        const seconds = timeLeft % 60;
+        
+        timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        timeLeft--;
+        if (timeLeft < 0) {
+            timeLeft = 24 * 3600; // Reset to 24 hours
+        }
+    }, 1000);
+}
+
+// Start auction timer when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    startAuctionTimer();
+});
 
 function loadMoreTokens() {
     // Simulate loading more tokens
