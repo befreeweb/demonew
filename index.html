@@ -1,450 +1,2149 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FanKoin - Entertainment Token Launchpad</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <div class="logo">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <span class="brand-text">FanKoin</span>
-            </div>
-            <div class="nav-links">
-                <a href="#trending">Trending</a>
-                <a href="create.html">Create Token</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#leaderboard">Leaderboard</a>
-                <button class="btn-connect-wallet" id="connectWallet">
-                    <i class="fas fa-wallet"></i>
-                    Connect Wallet
-                </button>
-            </div>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Launch Fan Tokens for Entertainment</h1>
-                    <p class="hero-subtitle">Create, trade, and invest in fan tokens for your favorite artists, creators, and entertainment brands. The future of fan engagement is here.</p>
-                    
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <span class="stat-number">50,000+</span>
-                            <span class="stat-label">Active Creators</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">$25M+</span>
-                            <span class="stat-label">Total Volume</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">1M+</span>
-                            <span class="stat-label">FanKoin Holders</span>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-actions">
-                        <a href="create.html" class="btn-primary large">
-                            <i class="fas fa-plus"></i>
-                            Create Fan Token
-                        </a>
-                        <button class="btn-secondary large" onclick="scrollToTrending()">
-                            <i class="fas fa-download"></i>
-                            Download Wallet
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="hero-visual">
-                    <div class="trending-preview">
-                        <h3>🚀 Latest Launch - Live Auction</h3>
-                        <div class="trending-list">
-                            <div class="trending-item">
-                                <div class="token-info">
-                                    <img src="https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="Taylor Swift" class="token-avatar">
-                                    <div>
-                                        <div class="token-name">$TAYLOR</div>
-                                        <div class="token-desc">Taylor Swift - Auction Ends in 2h</div>
-                                    </div>
-                                </div>
-                                <div class="token-price">
-                                    <div class="price">1.25 FanKoin</div>
-                                    <div class="change positive">Current Bid</div>
-                                </div>
-                            </div>
-                            <div class="trending-item">
-                                <div class="token-info">
-                                    <img src="https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="MrBeast" class="token-avatar">
-                                    <div>
-                                        <div class="token-name">$BEAST</div>
-                                        <div class="token-desc">MrBeast - Auction Ends in 5h</div>
-                                    </div>
-                                </div>
-                                <div class="token-price">
-                                    <div class="price">2.10 FanKoin</div>
-                                    <div class="change positive">Current Bid</div>
-                                </div>
-                            </div>
-                            <div class="trending-item">
-                                <div class="token-info">
-                                    <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="Dwayne Johnson" class="token-avatar">
-                                    <div>
-                                        <div class="token-name">$ROCK</div>
-                                        <div class="token-desc">Dwayne Johnson - Auction Ends in 1h</div>
-                                    </div>
-                                </div>
-                                <div class="token-price">
-                                    <div class="price">3.50 FanKoin</div>
-                                    <div class="change positive">Current Bid</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="auction-timer">
-                            <div class="timer-info">
-                                <span>Next Auction Starts In:</span>
-                                <span class="countdown-timer">23:45:12</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #0a0a0a;
+    overflow-x: hidden;
+}
 
-    <!-- Token Categories -->
-    <section class="categories">
-        <div class="container">
-            <div class="section-header">
-                <h2>Entertainment Categories</h2>
-                <p>Discover fan tokens across different entertainment verticals</p>
-            </div>
-            
-            <div class="category-tabs">
-                <button class="category-tab active" data-category="all">All</button>
-                <button class="category-tab" data-category="music">🎵 Music Artists</button>
-                <button class="category-tab" data-category="creators">📹 Content Creators</button>
-                <button class="category-tab" data-category="gaming">🎮 Gaming Streamers</button>
-                <button class="category-tab" data-category="sports">⚽ Sports Stars</button>
-                <button class="category-tab" data-category="movies">🎬 Movie Stars</button>
-                <button class="category-tab" data-category="comedy">😂 Comedians</button>
-            </div>
-        </div>
-    </section>
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-    <!-- Token Grid -->
-    <section class="token-grid" id="trending">
-        <div class="container">
-            <div class="grid-header">
-                <div class="grid-controls">
-                    <div class="sort-options">
-                        <select id="sortBy">
-                            <option value="volume">24h Volume</option>
-                            <option value="price">Price</option>
-                            <option value="change">% Change</option>
-                            <option value="marketcap">Market Cap</option>
-                            <option value="created">Recently Created</option>
-                        </select>
-                    </div>
-                    <div class="view-toggle">
-                        <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
-                        <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
-                    </div>
-                </div>
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search fan tokens..." id="searchInput">
-                </div>
-            </div>
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
 
-            <div class="tokens-container" id="tokensContainer">
-                <!-- Tokens will be dynamically loaded here -->
-            </div>
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-            <div class="load-more">
-                <button class="btn-secondary" onclick="loadMoreTokens()">Load More Tokens</button>
-            </div>
-        </div>
-    </section>
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-    <!-- Create Token Modal -->
-    <div class="modal-overlay" id="createModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3>Create Fan Token</h3>
-                <button class="modal-close" onclick="closeCreateModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="createTokenForm">
-                    <div class="form-group">
-                        <label>Token Avatar</label>
-                        <div class="avatar-upload">
-                            <div class="avatar-preview" id="avatarPreview">
-                                <i class="fas fa-camera"></i>
-                                <span>Upload Image</span>
-                            </div>
-                            <input type="file" id="avatarInput" accept="image/*" hidden>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Token Name</label>
-                            <input type="text" id="tokenName" placeholder="e.g., Taylor Swift Fan Token" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Token Symbol</label>
-                            <input type="text" id="tokenSymbol" placeholder="e.g., TAYLOR" maxlength="10" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Category</label>
-                        <select id="tokenCategory" required>
-                            <option value="">Select Category</option>
-                            <option value="music">🎵 Music Artist</option>
-                            <option value="creators">📹 Content Creator</option>
-                            <option value="gaming">🎮 Gaming</option>
-                            <option value="sports">⚽ Sports</option>
-                            <option value="movies">🎬 Movies/TV</option>
-                            <option value="comedy">😂 Comedy</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea id="tokenDescription" placeholder="Describe your fan token and what holders will get..." rows="4" required></textarea>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Initial Supply</label>
-                            <input type="number" id="initialSupply" placeholder="1000000" min="1000" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Initial Price (FANKOINS)</label>
-                            <input type="number" id="initialPrice" placeholder="1.0" step="0.1" min="1.0" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Social Links (Optional)</label>
-                        <div class="social-inputs">
-                            <input type="url" id="twitterLink" placeholder="Twitter URL">
-                            <input type="url" id="instagramLink" placeholder="Instagram URL">
-                            <input type="url" id="websiteLink" placeholder="Website URL">
-                        </div>
-                    </div>
-                    
-                    <div class="creation-cost">
-                        <div class="cost-breakdown">
-                            <div class="cost-item">
-                                <span>Creation Fee:</span>
-                                <span>10 FanKoin</span>
-                            </div>
-                            <div class="cost-item">
-                                <span>Initial Liquidity:</span>
-                                <span id="liquidityAmount">100 FanKoin</span>
-                            </div>
-                            <div class="cost-item total">
-                                <span>Total Cost:</span>
-                                <span id="totalCost">110 FanKoin</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn-primary full-width">
-                        <i class="fas fa-rocket"></i>
-                        Create Fan Token
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+.logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
 
-    <!-- Token Detail Modal -->
-    <div class="modal-overlay" id="tokenModal">
-        <div class="modal large">
-            <div class="modal-header">
-                <div class="token-header-info">
-                    <img src="" alt="" class="token-modal-avatar" id="modalTokenAvatar">
-                    <div>
-                        <h3 id="modalTokenName">Token Name</h3>
-                        <span class="token-symbol" id="modalTokenSymbol">$SYMBOL</span>
-                    </div>
-                </div>
-                <button class="modal-close" onclick="closeTokenModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="token-detail-content">
-                    <div class="token-chart-section">
-                        <div class="price-info">
-                            <div class="current-price">
-                                <span class="price-label">Current Price</span>
-                                <span class="price-value" id="modalTokenPrice">$0.00</span>
-                                <span class="price-change" id="modalTokenChange">+0.00%</span>
-                            </div>
-                            <div class="token-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Market Cap</span>
-                                    <span class="stat-value" id="modalMarketCap">$0</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">24h Volume</span>
-                                    <span class="stat-value" id="modalVolume">$0</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Holders</span>
-                                    <span class="stat-value" id="modalHolders">0</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chart-placeholder">
-                            <canvas id="priceChart" width="400" height="200"></canvas>
-                        </div>
-                    </div>
-                    
-                    <div class="trading-section">
-                        <div class="trade-tabs">
-                            <button class="trade-tab active" data-tab="buy">Buy</button>
-                            <button class="trade-tab" data-tab="sell">Sell</button>
-                        </div>
-                        
-                        <div class="trade-form" id="buyForm">
-                            <div class="trade-input-group">
-                                <label>Amount (ETH)</label>
-                                <div class="input-with-max">
-                                    <input type="number" id="buyAmount" placeholder="0.1" step="0.001">
-                                    <button class="max-btn" onclick="setMaxBuy()">MAX</button>
-                                </div>
-                            </div>
-                            <div class="trade-estimate">
-                                <div class="estimate-row">
-                                    <span>You'll receive:</span>
-                                    <span id="buyEstimate">0 tokens (1 FanKoin = $1)</span>
-                                </div>
-                                <div class="estimate-row">
-                                    <span>Price impact:</span>
-                                    <span id="buyPriceImpact">0.00%</span>
-                                </div>
-                            </div>
-                            <button class="btn-primary full-width" onclick="executeBuy()">
-                                <i class="fas fa-arrow-up"></i>
-                                Buy Tokens
-                            </button>
-                        </div>
-                        
-                        <div class="trade-form hidden" id="sellForm">
-                            <div class="trade-input-group">
-                                <label>Amount (Tokens)</label>
-                                <div class="input-with-max">
-                                    <input type="number" id="sellAmount" placeholder="100" step="1">
-                                    <button class="max-btn" onclick="setMaxSell()">MAX</button>
-                                </div>
-                            </div>
-                            <div class="trade-estimate">
-                                <div class="estimate-row">
-                                    <span>You'll receive:</span>
-                                    <span id="sellEstimate">0 FanKoin</span>
-                                </div>
-                                <div class="estimate-row">
-                                    <span>Price impact:</span>
-                                    <span id="sellPriceImpact">0.00%</span>
-                                </div>
-                            </div>
-                            <button class="btn-secondary full-width" onclick="executeSell()">
-                                <i class="fas fa-arrow-down"></i>
-                                Sell Tokens
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="token-description">
-                    <h4>About</h4>
-                    <p id="modalTokenDescription">Token description will appear here...</p>
-                </div>
-                
-                <div class="token-social-links" id="modalSocialLinks">
-                    <!-- Social links will be populated here -->
-                </div>
-            </div>
-        </div>
-    </div>
+.brand-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <div class="logo">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <span>FanKoin ($1 = 1 FanKoin)</span>
-                    </div>
-                    <p>The premier platform for creating and trading entertainment fan tokens. All tokens priced in FanKoin (1 FanKoin = $1 USD). Empowering creators and fans through blockchain technology.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Platform</h4>
-                    <a href="#trending">Trending Tokens</a>
-                    <a href="#create">Create Token</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#leaderboard">Leaderboard</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <a href="#">Documentation</a>
-                    <a href="#">API</a>
-                    <a href="#">Tutorials</a>
-                    <a href="#">Support</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Risk Disclosure</a>
-                    <a href="#">Contact</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 FanKoin DAO. All tokens priced in FanKoin (1 FanKoin = $1 USD). Trading involves risk.</p>
-                <div class="footer-disclaimer">
-                    <p><strong>Risk Warning:</strong> Fan tokens are highly volatile. FanKoin is pegged at $1 USD. Only invest what you can afford to lose. Made with love and passion for the entertainment industry by Business of Cinema.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+.tagline {
+    font-size: 0.8rem;
+    color: #ccc;
+    font-weight: 500;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: #ff6b35;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.wallet-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.balance-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: #ff6b35;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.balance-display.hidden {
+    display: none;
+}
+
+.btn-connect-wallet {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-connect-wallet:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    font-size: 0.95rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #ff6b35;
+    border: 2px solid #ff6b35;
+}
+
+.btn-secondary:hover {
+    background: #ff6b35;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-primary.large, .btn-secondary.large {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+}
+
+.btn-bid {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.btn-bid:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+.btn-place-bid {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 1.5rem 0;
+}
+
+.btn-place-bid:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+}
+
+.btn-place-bid:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+    color: #ff4444;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.pulse-dot {
+    width: 12px;
+    height: 12px;
+    background: #ff4444;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #fff, #ff6b35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff6b35;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Featured Auction */
+.featured-auction {
+    position: relative;
+}
+
+.charity-auction-preview {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    color: #fff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.charity-auction-preview h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #ff6b35;
+}
+
+.charity-auction-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.charity-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.charity-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 107, 53, 0.5);
+}
+
+.charity-info {
+    flex: 1;
+}
+
+.charity-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.charity-symbol {
+    color: #ff6b35;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.charity-cause {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.charity-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.current-bid {
+    text-align: center;
+}
+
+.bid-label {
+    display: block;
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.bid-amount {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.bid-count {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.charity-timer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.timer-unit {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem 0.75rem;
+    min-width: 70px;
+}
+
+.time-value {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ff6b35;
+    font-family: 'Courier New', monospace;
+}
+
+.time-label {
+    font-size: 0.8rem;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.charity-benefits {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.benefit-title {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.benefit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.benefit-list li {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.btn-bid-charity {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-bid-charity:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+}
+
+.auction-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    color: #fff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.auction-card.featured {
+    border: 2px solid rgba(255, 107, 53, 0.5);
+    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+}
+
+.auction-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.status-badge {
+    background: rgba(255, 68, 68, 0.2);
+    color: #ff4444;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+.time-left {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: #ff6b35;
+    font-size: 1.1rem;
+}
+
+.auction-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.auction-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 107, 53, 0.5);
+}
+
+.auction-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.token-symbol {
+    color: #ff6b35;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.auction-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.current-bid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.bid-label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.bid-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.bid-currency {
+    color: #ff6b35;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+.bid-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.quick-bid-section {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.bid-input-group {
+    position: relative;
+    flex: 1;
+}
+
+.bid-input-group input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 12px 80px 12px 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.bid-input-group input:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.currency-label {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff6b35;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Live Auctions Section */
+.live-auctions {
+    padding: 6rem 0;
+    background: #111;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+.auction-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+.auctions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.auction-grid-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.auction-grid-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b35, #f7931e);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.auction-grid-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.1);
+    border-color: rgba(255, 107, 53, 0.3);
+}
+
+.auction-grid-card:hover::before {
+    opacity: 1;
+}
+
+.auction-card-header {
+    display: flex;
+    justify-content: between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.auction-card-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.auction-card-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 107, 53, 0.3);
+}
+
+.auction-card-details h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.auction-card-symbol {
+    color: #ff6b35;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.auction-card-timer {
+    text-align: right;
+    color: #ff6b35;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.auction-card-bid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.current-bid-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.current-bid-label {
+    color: #ccc;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.current-bid-amount {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.bid-stats {
+    text-align: right;
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.auction-card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+}
+
+/* Token Swap Section */
+.token-swap-section {
+    padding: 6rem 0;
+    background: #0a0a0a;
+}
+
+.swap-container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.swap-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.swap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.swap-header h3 {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.settings-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.settings-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.swap-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.swap-input-group {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.swap-input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.balance {
+    color: #ff6b35;
+    cursor: pointer;
+}
+
+.swap-input-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.swap-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    outline: none;
+}
+
+.swap-input::placeholder {
+    color: #666;
+}
+
+.token-select-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.token-select-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.token-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.swap-arrow {
+    display: flex;
+    justify-content: center;
+    margin: -0.5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.swap-arrow-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ccc;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swap-arrow-btn:hover {
+    background: rgba(255, 107, 53, 0.2);
+    border-color: #ff6b35;
+    color: #ff6b35;
+    transform: rotate(180deg);
+}
+
+.swap-details {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.positive {
+    color: #4ade80;
+}
+
+.btn-swap {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 1rem;
+}
+
+.btn-swap:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+}
+
+.btn-swap:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.swap-info {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.swap-info h4 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.swap-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.feature-item i {
+    color: #ff6b35;
+    font-size: 1.2rem;
+    margin-top: 0.25rem;
+}
+
+.feature-item strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.feature-item p {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Upcoming Auctions */
+.upcoming-auctions {
+    padding: 6rem 0;
+    background: #0a0a0a;
+}
+
+.upcoming-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.upcoming-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.upcoming-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6b7280, #9ca3af);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.upcoming-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(107, 114, 128, 0.1);
+}
+
+.upcoming-card:hover::before {
+    opacity: 1;
+}
+
+.upcoming-status {
+    background: rgba(107, 114, 128, 0.2);
+    color: #9ca3af;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.upcoming-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 3px solid rgba(107, 114, 128, 0.3);
+}
+
+.upcoming-card h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.upcoming-symbol {
+    color: #9ca3af;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.starting-bid {
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.starts-in {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.notify-btn {
+    background: transparent;
+    border: 2px solid #6b7280;
+    color: #9ca3af;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.notify-btn:hover {
+    background: #6b7280;
+    color: white;
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+}
+
+.auction-modal {
+    max-width: 900px;
+}
+
+.wallet-modal {
+    max-width: 400px;
+}
+
+.success-modal {
+    max-width: 450px;
+}
+
+.modal.large {
+    max-width: 800px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.auction-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.charity-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 107, 53, 0.5);
+}
+
+.modal-symbol {
+    color: #ff6b35;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.modal-category {
+    color: #ccc;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+/* Auction Detail Content */
+.auction-detail-content {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.auction-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.timer-display {
+    text-align: center;
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.timer-label {
+    color: #ff6b35;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.countdown-display {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.time-unit {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem 0.75rem;
+    min-width: 70px;
+}
+
+.time-value {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ff6b35;
+    font-family: 'Courier New', monospace;
+}
+
+.time-label {
+    font-size: 0.8rem;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.current-bid-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.current-bid-display {
+    text-align: center;
+}
+
+.bid-label {
+    color: #ccc;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.bid-amount-large {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.bid-amount-large .currency {
+    color: #ff6b35;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.bid-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.bid-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bid-history {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.bid-history h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.bid-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.bid-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.bid-user {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.bid-amount-small {
+    color: #fff;
+    font-weight: 600;
+}
+
+.bid-time {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+/* Bidding Section */
+.bidding-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.place-bid-form h4 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.bid-input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.minimum-bid-info {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.minimum-bid-info strong {
+    color: #ff6b35;
+}
+
+.bid-input-group.large {
+    position: relative;
+}
+
+.bid-input-group.large input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 16px 100px 16px 16px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: border-color 0.3s ease;
+}
+
+.bid-input-group.large input:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.bid-input-group.large .currency-label {
+    right: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.quick-bid-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.quick-bid-btn {
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    color: #ff6b35;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.quick-bid-btn:hover {
+    background: rgba(255, 107, 53, 0.2);
+    transform: translateY(-1px);
+}
+
+.bid-info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+.bid-info-text p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bid-info-text i {
+    color: #ff6b35;
+    width: 16px;
+}
+
+.token-benefits {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.token-benefits h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.benefit-item i {
+    color: #ff6b35;
+    width: 16px;
+}
+
+.celebrity-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.celebrity-info h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.celebrity-info p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* Charity Bid Modal Content */
+.charity-bid-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.charity-cause-info {
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.charity-cause-info h4 {
+    color: #ff6b35;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.charity-cause-info p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.current-bid-display {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.bid-info {
+    margin-bottom: 2rem;
+}
+
+.bid-amount-large {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 1rem 0;
+}
+
+.bidder-count {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.charity-timer-large {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.bid-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.bid-input-group label {
+    display: block;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.bid-input-container {
+    position: relative;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff6b35;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.bid-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 16px 16px 16px 40px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: border-color 0.3s ease;
+}
+
+.bid-input:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.charity-benefits {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.charity-benefits h5 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.charity-benefits ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.charity-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.charity-benefits i {
+    color: #ff6b35;
+    width: 16px;
+}
+
+.btn-place-charity-bid {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-place-charity-bid:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+}
+
+/* Token Selector Modal */
+.token-search {
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.token-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Wallet Modal */
+.wallet-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.wallet-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.wallet-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff;
+    text-align: left;
+    width: 100%;
+}
+
+.wallet-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ff6b35;
+    transform: translateY(-2px);
+}
+
+.wallet-option img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.wallet-option span {
+    flex: 1;
+    font-weight: 600;
+}
+
+.wallet-option i {
+    color: #ff6b35;
+}
+
+.wallet-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.wallet-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wallet-info i {
+    color: #ff6b35;
+    width: 16px;
+}
+
+/* Success Modal */
+.success-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.success-content h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.success-content p {
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+.success-details {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.success-detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.success-detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.success-detail-row .label {
+    color: #ccc;
+}
+
+.success-detail-row .value {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Footer */
+.footer {
+    background: #0a0a0a;
+    padding: 4rem 0 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.footer-brand span {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.footer-section p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.footer-section h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-section a {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #ff6b35;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: #ccc;
+}
+
+.footer-disclaimer {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .featured-auction {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .auction-filters {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+    
+    .auctions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .upcoming-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .auction-detail-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .countdown-display {
+        gap: 0.5rem;
+    }
+    
+    .time-unit {
+        min-width: 60px;
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .time-value {
+        font-size: 1.5rem;
+    }
+    
+    .bid-amount-large {
+        font-size: 2rem;
+    }
+    
+    .bid-amount-large .currency {
+        font-size: 1.2rem;
+    }
+    
+    .bid-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .quick-bid-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .swap-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    
+    .auction-card {
+        padding: 1.5rem;
+    }
+    
+    .auction-grid-card {
+        padding: 1rem;
+    }
+    
+    .modal {
+        width: 95%;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .quick-bid-section {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .bid-input-group.large input {
+        font-size: 1rem;
+        padding: 14px 80px 14px 14px;
+    }
+}
+
+/* Additional Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auction-grid-card,
+.upcoming-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.auction-grid-card:nth-child(2) { animation-delay: 0.1s; }
+.auction-grid-card:nth-child(3) { animation-delay: 0.2s; }
+.auction-grid-card:nth-child(4) { animation-delay: 0.3s; }
+.auction-grid-card:nth-child(5) { animation-delay: 0.4s; }
+.auction-grid-card:nth-child(6) { animation-delay: 0.5s; }
+
+/* Mobile Menu Styles */
+.nav-links.active {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.98);
+    flex-direction: column;
+    padding: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
