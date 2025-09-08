@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FanPump - Entertainment Fan Tokens</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" crossorigin href="/assets/index-C6qPv26S.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <span class="brand-text">FanPump</span>
+            </div>
+            <div class="nav-links">
+                <a href="#trending">Trending</a>
+                <a href="create.html">Create Token</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#leaderboard">Leaderboard</a>
+                <button class="btn-connect-wallet" id="connectWallet">
+                    <i class="fas fa-wallet"></i>
+                    Connect Wallet
+                </button>
+                <button class="btn-secondary" onclick="openWallet()">
+                    <i class="fas fa-wallet"></i>
+                    Open Wallet
+                </button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Trade Entertainment Fan Tokens</h1>
+                    <p class="hero-subtitle">Connect with your favorite celebrities, creators, and artists through exclusive fan tokens. Buy, sell, and trade digital assets that give you real utility and access.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">$2.4M</span>
+                            <span class="stat-label">Total Volume</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">12.5K</span>
+                            <span class="stat-label">Active Traders</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">847</span>
+                            <span class="stat-label">Tokens Created</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <button class="btn-primary large" onclick="scrollToTrending()">
+                            <i class="fas fa-chart-line"></i>
+                            Explore Tokens
+                        </button>
+                        <a href="create.html" class="btn-secondary large">
+                            <i class="fas fa-plus"></i>
+                            Create Token
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Charity Auction Preview -->
+                <div class="charity-auction-preview">
+                    <h3>🎵 Featured Charity Auction</h3>
+                    <div class="charity-auction-card">
+                        <div class="charity-header">
+                            <img src="https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="Golshifteh Farahani" class="charity-avatar">
+                            <div class="charity-info">
+                                <div class="charity-name">Golshifteh Farahani</div>
+                                <div class="charity-symbol">$GOLSHI</div>
+                                <div class="charity-cause">Music & Charity Foundation</div>
+                            </div>
+                        </div>
+                        
+                        <div class="charity-details">
+                            <div class="current-bid">
+                                <span class="bid-label">Current Bid</span>
+                                <span class="bid-amount">$50,000</span>
+                                <span class="bid-count">12 bidders</span>
+                            </div>
+                            
+                            <div class="charity-timer">
+                                <div class="timer-unit">
+                                    <span class="time-value" id="charityHours">02</span>
+                                    <span class="time-label">Hours</span>
+                                </div>
+                                <div class="timer-unit">
+                                    <span class="time-value" id="charityMinutes">45</span>
+                                    <span class="time-label">Minutes</span>
+                                </div>
+                                <div class="timer-unit">
+                                    <span class="time-value" id="charitySeconds">23</span>
+                                    <span class="time-label">Seconds</span>
+                                </div>
+                            </div>
+                            
+                            <div class="charity-benefits">
+                                <div class="benefit-title">Token Holder Benefits:</div>
+                                <ul class="benefit-list">
+                                    <li>• Exclusive access to charity foundation updates</li>
+                                    <li>• Private music sessions and concerts</li>
+                                    <li>• Behind-the-scenes film content</li>
+                                    <li>• Humanitarian project involvement</li>
+                                    <li>• Meet & greet opportunities</li>
+                                    <li>• Limited edition merchandise</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-bid-charity" onclick="openCharityBidModal()">
+                            <i class="fas fa-gavel"></i>
+                            Place Bid
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Browse by Category</h2>
+                <p>Discover fan tokens across different entertainment categories</p>
+            </div>
+            
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">All Categories</button>
+                <button class="category-tab" data-category="music">🎵 Music</button>
+                <button class="category-tab" data-category="creators">📹 Creators</button>
+                <button class="category-tab" data-category="gaming">🎮 Gaming</button>
+                <button class="category-tab" data-category="sports">⚽ Sports</button>
+                <button class="category-tab" data-category="movies">🎬 Movies</button>
+                <button class="category-tab" data-category="comedy">😂 Comedy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Grid -->
+    <section class="token-grid" id="trending">
+        <div class="container">
+            <div class="grid-header">
+                <h2>Trending Tokens</h2>
+                <div class="grid-controls">
+                    <div class="sort-options">
+                        <select id="sortBy">
+                            <option value="volume">Sort by Volume</option>
+                            <option value="price">Sort by Price</option>
+                            <option value="change">Sort by Change</option>
+                            <option value="marketcap">Sort by Market Cap</option>
+                        </select>
+                    </div>
+                    <div class="view-toggle">
+                        <button class="view-btn active">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search tokens...">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tokens-container" id="tokensContainer">
+                <!-- Tokens will be populated by JavaScript -->
+            </div>
+            
+            <div class="load-more">
+                <button class="btn-secondary" onclick="loadMoreTokens()">
+                    <i class="fas fa-plus"></i>
+                    Load More Tokens
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Swap Section -->
+    <section class="token-swap-section">
+        <div class="container">
+            <div class="swap-container">
+                <div class="swap-card">
+                    <div class="swap-header">
+                        <h3>Swap Tokens</h3>
+                        <button class="settings-btn">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="swap-form">
+                        <div class="swap-input-group">
+                            <div class="swap-input-header">
+                                <span>From</span>
+                                <span class="balance">Balance: <span id="fromBalance">1,000</span></span>
+                            </div>
+                            <div class="swap-input-container">
+                                <input type="number" class="swap-input" id="fromAmount" placeholder="0.0">
+                                <button class="token-select-btn" onclick="openTokenSelector('from')">
+                                    <img src="https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=24&h=24&fit=crop" alt="FanKoin" class="token-icon">
+                                    <span id="fromToken">FanKoin</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="swap-arrow">
+                            <button class="swap-arrow-btn" onclick="swapTokens()">
+                                <i class="fas fa-arrow-down"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="swap-input-group">
+                            <div class="swap-input-header">
+                                <span>To</span>
+                                <span class="balance">Balance: <span id="toBalance">0</span></span>
+                            </div>
+                            <div class="swap-input-container">
+                                <input type="number" class="swap-input" id="toAmount" placeholder="0.0" readonly>
+                                <button class="token-select-btn" onclick="openTokenSelector('to')">
+                                    <img src="https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=24&h=24&fit=crop" alt="TAYLOR" class="token-icon">
+                                    <span id="toToken">TAYLOR</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="swap-details">
+                            <div class="detail-row">
+                                <span>Exchange Rate</span>
+                                <span id="exchangeRate">1 FanKoin = 0.8000 TAYLOR</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Price Impact</span>
+                                <span id="priceImpact" class="positive">&lt; 0.01%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Fee</span>
+                                <span class="positive">$0.00 (0%)</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-swap" id="swapBtn" onclick="executeSwap()">
+                            <i class="fas fa-exchange-alt"></i>
+                            Swap Tokens
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="swap-info">
+                    <h4>Why Swap on FanPump?</h4>
+                    <div class="swap-features">
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <div>
+                                <strong>Instant Swaps</strong>
+                                <p>Trade tokens instantly with zero waiting time</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <strong>Secure Trading</strong>
+                                <p>All swaps are secured by smart contracts</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-percentage"></i>
+                            <div>
+                                <strong>Zero Fees</strong>
+                                <p>No trading fees for token swaps</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <strong>Best Rates</strong>
+                                <p>Competitive exchange rates for all tokens</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <span>FanPump</span>
+                    </div>
+                    <p>The premier platform for creating and trading entertainment fan tokens.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <a href="#trending">Trending</a>
+                    <a href="create.html">Create Token</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#leaderboard">Leaderboard</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">API</a>
+                    <a href="#">Support</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Risk Disclosure</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FanPump. All rights reserved.</p>
+                <div class="footer-disclaimer">
+                    <p><strong>Disclaimer:</strong> Fan tokens are digital assets and may be subject to high volatility. Please invest responsibly.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Wallet Modal -->
+    <div class="modal-overlay" id="walletModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Your Wallet</h3>
+                <button class="modal-close" onclick="closeWalletModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="wallet-content" id="walletContent">
+                    <!-- Wallet content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charity Bid Modal -->
+    <div class="modal-overlay" id="charityBidModal">
+        <div class="modal large">
+            <div class="modal-header">
+                <div class="charity-modal-header">
+                    <img src="https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="Golshifteh Farahani" class="token-modal-avatar">
+                    <div>
+                        <h3>Golshifteh Farahani</h3>
+                        <div class="token-symbol">$GOLSHI</div>
+                    </div>
+                </div>
+                <button class="modal-close" onclick="closeCharityBidModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="charity-bid-content">
+                    <div class="charity-cause-info">
+                        <h4>Music & Charity Foundation</h4>
+                        <p>Support Golshifteh Farahani's humanitarian efforts and music projects. This charity auction helps fund educational programs, women's rights initiatives, and cultural preservation projects across the Middle East and beyond.</p>
+                    </div>
+                    
+                    <div class="current-bid-display">
+                        <div class="bid-info">
+                            <span class="bid-amount-large">$50,000</span>
+                            <span class="bidder-count">12 bidders participating</span>
+                        </div>
+                        <div class="charity-timer-large">
+                            <div class="timer-unit">
+                                <span class="time-value">02</span>
+                                <span class="time-label">Hours</span>
+                            </div>
+                            <div class="timer-unit">
+                                <span class="time-value">45</span>
+                                <span class="time-label">Minutes</span>
+                            </div>
+                            <div class="timer-unit">
+                                <span class="time-value">23</span>
+                                <span class="time-label">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bid-form">
+                        <div class="bid-input-group">
+                            <label>Your Bid Amount</label>
+                            <div class="bid-input-container">
+                                <span class="currency-symbol">$</span>
+                                <input type="number" id="charityBidAmount" class="bid-input" placeholder="50001" min="50001">
+                            </div>
+                            <div class="minimum-bid-info">
+                                Minimum bid: <strong>$50,001</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="charity-benefits">
+                            <h5>Token Holder Benefits</h5>
+                            <ul>
+                                <li><i class="fas fa-heart"></i> Exclusive charity foundation updates</li>
+                                <li><i class="fas fa-music"></i> Private music sessions and concerts</li>
+                                <li><i class="fas fa-film"></i> Behind-the-scenes film content</li>
+                                <li><i class="fas fa-hands-helping"></i> Humanitarian project involvement</li>
+                                <li><i class="fas fa-handshake"></i> Meet & greet opportunities</li>
+                                <li><i class="fas fa-gift"></i> Limited edition merchandise</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn-place-charity-bid" onclick="placeCharityBid()">
+                            <i class="fas fa-gavel"></i>
+                            Place Charity Bid
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Token Selector Modal -->
+    <div class="modal-overlay" id="tokenSelectorModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Select Token</h3>
+                <button class="modal-close" onclick="closeTokenSelector()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="token-search">
+                    <input type="text" class="search-input" placeholder="Search tokens...">
+                </div>
+                <div class="token-list" id="tokenList">
+                    <!-- Token options will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
