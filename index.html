@@ -14,24 +14,24 @@
         <div class="container">
             <div class="nav-brand">
                 <div class="logo">
-                    <i class="fas fa-gavel"></i>
+                    <i class="fas fa-rocket"></i>
                 </div>
-                <span class="brand-text">FanKoin</span>
-                <span class="tagline">Celebrity Token Auctions</span>
+                <span class="brand-text">FanPump</span>
             </div>
             <div class="nav-links">
                 <a href="#live-auctions">Live Auctions</a>
                 <a href="#upcoming">Upcoming</a>
+                <a href="#trending">Trending</a>
                 <a href="#my-bids">My Bids</a>
                 <a href="#portfolio">Portfolio</a>
                 <div class="wallet-info" id="walletInfo">
                     <div class="balance-display">
-                        <i class="fas fa-coins"></i>
-                        <span id="walletBalance">0</span> FanKoin
-                    </div>
-                    <button class="btn-connect-wallet" id="connectWallet">
                         <i class="fas fa-wallet"></i>
-                        Connect Wallet
+                        <span id="walletBalance">$0</span>
+                    </div>
+                    <button class="btn-primary" id="connectWallet">
+                        <i class="fas fa-wallet"></i>
+                        Wallet
                     </button>
                 </div>
             </div>
@@ -52,18 +52,33 @@
                         <div class="pulse-dot"></div>
                         <span>LIVE AUCTIONS</span>
                     </div>
-                    <h1>Bid on Celebrity Fan Tokens</h1>
-                    <p class="hero-subtitle">Own exclusive fan tokens from your favorite celebrities, artists, and creators. All auctions priced in FanKoin (1 FanKoin = $1 USD).</p>
+                    <h1>Create & Trade Celebrity Fan Tokens</h1>
+                    <p class="hero-subtitle">Launch your entertainment token in minutes or trade existing celebrity fan tokens. Connect with fans, monetize your content, and build your community.</p>
                     
                     <div class="hero-actions">
                         <button class="btn-primary large" onclick="scrollToAuctions()">
                             <i class="fas fa-gavel"></i>
                             Start Bidding
                         </button>
-                        <button class="btn-secondary large" onclick="downloadWallet()">
-                            <i class="fas fa-download"></i>
-                            Download Wallet
+                        <button class="btn-secondary large" onclick="openWalletModal()">
+                            <i class="fas fa-wallet"></i>
+                            Open Wallet
                         </button>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">2,847</span>
+                            <span class="stat-label">Tokens Created</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$12.4M</span>
+                            <span class="stat-label">Total Volume</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">45.2K</span>
+                            <span class="stat-label">Active Traders</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -81,8 +96,8 @@
                                 <div class="auction-details">
                                     <div class="current-bid">
                                         <span class="bid-label">Current Bid</span>
-                                        <span class="bid-amount" id="taylorBid">1,250</span>
-                                        <span class="bid-currency">FanKoin</span>
+                                        <span class="bid-amount" id="taylorBid">$1,250</span>
+                                        <span class="bid-currency-alt">(₹1,04,125)</span>
                                     </div>
                                     <div class="bid-count">
                                         <i class="fas fa-users"></i>
@@ -93,8 +108,8 @@
                         </div>
                         <div class="quick-bid-section">
                             <div class="bid-input-group">
-                                <input type="number" id="quickBidAmount" placeholder="1300" min="1251">
-                                <span class="currency-label">FanKoin</span>
+                                <input type="number" id="quickBidAmount" placeholder="$1300" min="1251">
+                                <span class="currency-label">USD</span>
                             </div>
                             <button class="btn-bid" onclick="placeBid('TAYLOR', 'quickBidAmount')">
                                 <i class="fas fa-gavel"></i>
@@ -129,6 +144,62 @@
         </div>
     </section>
 
+    <!-- Trending Section -->
+    <section class="trending" id="trending">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trending Tokens</h2>
+                <p>Popular celebrity fan tokens with high trading volume</p>
+            </div>
+
+            <div class="trending-grid">
+                <div class="trending-card">
+                    <div class="trending-rank">#1</div>
+                    <img src="https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="Taylor Swift" class="trending-avatar">
+                    <div class="trending-info">
+                        <h4>Taylor Swift</h4>
+                        <span class="trending-symbol">$TAYLOR</span>
+                        <div class="trending-price">$2.45 <span class="price-change positive">+12.5%</span></div>
+                        <div class="trending-volume">Vol: $1.2M</div>
+                    </div>
+                </div>
+
+                <div class="trending-card">
+                    <div class="trending-rank">#2</div>
+                    <img src="https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="MrBeast" class="trending-avatar">
+                    <div class="trending-info">
+                        <h4>MrBeast</h4>
+                        <span class="trending-symbol">$BEAST</span>
+                        <div class="trending-price">$3.21 <span class="price-change positive">+8.7%</span></div>
+                        <div class="trending-volume">Vol: $890K</div>
+                    </div>
+                </div>
+
+                <div class="trending-card">
+                    <div class="trending-rank">#3</div>
+                    <img src="https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="Cristiano Ronaldo" class="trending-avatar">
+                    <div class="trending-info">
+                        <h4>Cristiano Ronaldo</h4>
+                        <span class="trending-symbol">$CR7</span>
+                        <div class="trending-price">$4.12 <span class="price-change positive">+15.3%</span></div>
+                        <div class="trending-volume">Vol: $2.1M</div>
+                    </div>
+                </div>
+
+                <div class="trending-card">
+                    <div class="trending-rank">#4</div>
+                    <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" alt="The Rock" class="trending-avatar">
+                    <div class="trending-info">
+                        <h4>Dwayne Johnson</h4>
+                        <span class="trending-symbol">$ROCK</span>
+                        <div class="trending-price">$5.67 <span class="price-change positive">+6.2%</span></div>
+                        <div class="trending-volume">Vol: $750K</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Upcoming Auctions -->
     <section class="upcoming-auctions" id="upcoming">
         <div class="container">
@@ -142,6 +213,42 @@
             </div>
         </div>
     </section>
+
+    <!-- Portfolio Modal -->
+    <div class="modal-overlay" id="portfolioModal">
+        <div class="modal portfolio-modal">
+            <div class="modal-header">
+                <h3>My Portfolio</h3>
+                <button class="modal-close" onclick="closePortfolioModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="portfolio-summary">
+                    <div class="portfolio-stat">
+                        <span class="stat-label">Total Value</span>
+                        <span class="stat-value" id="portfolioValue">$0</span>
+                    </div>
+                    <div class="portfolio-stat">
+                        <span class="stat-label">Total Tokens</span>
+                        <span class="stat-value" id="portfolioTokens">0</span>
+                    </div>
+                    <div class="portfolio-stat">
+                        <span class="stat-label">P&L</span>
+                        <span class="stat-value" id="portfolioPnL">$0</span>
+                    </div>
+                </div>
+                
+                <div class="portfolio-tokens" id="portfolioTokensList">
+                    <div class="empty-portfolio">
+                        <i class="fas fa-wallet"></i>
+                        <h4>No Tokens Yet</h4>
+                        <p>Start bidding on celebrity tokens to build your portfolio!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Auction Detail Modal -->
     <div class="modal-overlay" id="auctionModal">
@@ -211,24 +318,24 @@
                             <h4>Place Your Bid</h4>
                             <div class="bid-input-section">
                                 <div class="minimum-bid-info">
-                                    <span>Minimum bid: <strong id="minimumBid">1,251</strong> FanKoin</span>
+                                    <span>Minimum bid: <strong id="minimumBid">$1,251</strong></span>
                                 </div>
                                 <div class="bid-input-group large">
-                                    <input type="number" id="bidAmount" placeholder="1300" min="1251">
-                                    <span class="currency-label">FanKoin</span>
+                                    <input type="number" id="bidAmount" placeholder="$1300" min="1251">
+                                    <span class="currency-label">USD</span>
                                 </div>
                                 <div class="quick-bid-buttons">
-                                    <button class="quick-bid-btn" onclick="setQuickBid(50)">+50</button>
-                                    <button class="quick-bid-btn" onclick="setQuickBid(100)">+100</button>
-                                    <button class="quick-bid-btn" onclick="setQuickBid(250)">+250</button>
-                                    <button class="quick-bid-btn" onclick="setQuickBid(500)">+500</button>
+                                    <button class="quick-bid-btn" onclick="setQuickBid(50)">+$50</button>
+                                    <button class="quick-bid-btn" onclick="setQuickBid(100)">+$100</button>
+                                    <button class="quick-bid-btn" onclick="setQuickBid(250)">+$250</button>
+                                    <button class="quick-bid-btn" onclick="setQuickBid(500)">+$500</button>
                                 </div>
                                 <button class="btn-place-bid" id="placeBidBtn" onclick="submitBid()">
                                     <i class="fas fa-gavel"></i>
                                     Place Bid
                                 </button>
                                 <div class="bid-info-text">
-                                    <p><i class="fas fa-info-circle"></i> Your bid is binding. Make sure you have sufficient FanKoin balance.</p>
+                                    <p><i class="fas fa-info-circle"></i> Your bid is binding. Make sure you have sufficient balance.</p>
                                     <p><i class="fas fa-shield-alt"></i> All bids are secured by smart contracts.</p>
                                 </div>
                             </div>
@@ -277,9 +384,14 @@
                         <span>Coinbase Wallet</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
+                    <button class="wallet-option" onclick="openPortfolioModal()">
+                        <i class="fas fa-chart-pie" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e91e63, #9c27b0); border-radius: 8px; color: white; font-size: 1.2rem;"></i>
+                        <span>View Portfolio</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
                 <div class="wallet-info">
-                    <p><i class="fas fa-info-circle"></i> Connect your wallet to participate in auctions and manage your FanKoin balance.</p>
+                    <p><i class="fas fa-info-circle"></i> Connect your wallet to participate in auctions and manage your portfolio.</p>
                     <p><i class="fas fa-shield-alt"></i> Your wallet connection is secure and encrypted.</p>
                 </div>
             </div>
@@ -312,11 +424,11 @@
                 <div class="footer-section">
                     <div class="footer-brand">
                         <div class="logo">
-                            <i class="fas fa-gavel"></i>
+                            <i class="fas fa-rocket"></i>
                         </div>
-                        <span>FanKoin</span>
+                        <span>FanPump</span>
                     </div>
-                    <p>The premier celebrity token auction platform. All auctions priced in FanKoin (1 FanKoin = $1 USD). Empowering fans to own exclusive tokens from their favorite celebrities.</p>
+                    <p>The premier platform for creating and trading entertainment fan tokens. Empowering fans to own exclusive tokens from their favorite celebrities.</p>
                 </div>
                 
                 <div class="footer-section">
@@ -345,9 +457,9 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 FanKoin DAO. All auctions priced in FanKoin (1 FanKoin = $1 USD). Bidding involves risk.</p>
+                <p>&copy; 2025 FanPump. All rights reserved.</p>
                 <div class="footer-disclaimer">
-                    <p><strong>Auction Notice:</strong> All bids are final and binding. FanKoin is pegged at $1 USD. Only bid what you can afford. Created by Business of Cinema.</p>
+                    <p><strong>Risk Warning:</strong> Token trading involves risk. Only invest what you can afford to lose. Created by Business of Cinema.</p>
                 </div>
             </div>
         </div>
