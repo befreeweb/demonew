@@ -866,7 +866,8 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
-    align-items: center;
+    align-items: c
+}enter;
     justify-content: center;
 }
 
