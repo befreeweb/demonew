@@ -719,16 +719,8 @@ body {
 
 /* Token Swap Section */
 .token-swap-section {
-    padding: 4rem 0;
-    background: #111;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.swap-container {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 3rem;
-    align-items: start;
+    padding: 6rem 0;
+    background: #0a0a0a;
 }
 
 .swap-card {
@@ -736,6 +728,13 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.swap-container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .swap-header {
@@ -944,47 +943,140 @@ body {
     transform: none;
 }
 
-.swap-info {
+/* Sticky Wallet Sidebar */
+.wallet-sidebar {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 320px;
     background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
-    padding: 2rem;
-    height: fit-content;
+    padding: 1.5rem;
+    z-index: 999;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    transition: transform 0.3s ease;
 }
 
-.swap-info h4 {
-    color: #fff;
-    margin-bottom: 1.5rem;
-    font-size: 1.25rem;
+.wallet-sidebar.hidden {
+    transform: translateX(100%);
 }
 
-.swap-features {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.swap-features .feature-item {
+.wallet-sidebar-header {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.swap-features .feature-item i {
-    color: #e91e63;
-    font-size: 1.25rem;
-    margin-top: 0.25rem;
-}
-
-.swap-features .feature-item strong {
+.wallet-sidebar-header h3 {
     color: #fff;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.wallet-close-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.wallet-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.wallet-sidebar-balance {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    border-radius: 12px;
+}
+
+.sidebar-balance-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e91e63;
     display: block;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-balance-label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.wallet-sidebar-tokens {
+    margin-bottom: 2rem;
+}
+
+.wallet-sidebar-tokens h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.sidebar-token-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar-token-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-token-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar-token-info {
+    flex: 1;
+}
+
+.sidebar-token-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
     margin-bottom: 0.25rem;
 }
 
-.swap-features .feature-item p {
-    color: #ccc;
+.sidebar-token-symbol {
+    color: #e91e63;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.sidebar-token-balance {
+    text-align: right;
+}
+
+.sidebar-token-amount {
+    color: #fff;
+    font-weight: 600;
     font-size: 0.9rem;
-    margin: 0;
+    display: block;
+}
+
 }
 
 /* Modals */
@@ -1897,6 +1989,10 @@ body {
         gap: 2rem;
     }
     
+    .wallet-sidebar {
+        display: none;
+    }
+    
     .current-bid-display {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1978,6 +2074,10 @@ body {
     
     .token-card {
         padding: 1rem;
+    }
+    
+    .swap-card {
+        padding: 1.5rem;
     }
 }
 
