@@ -1,258 +1,2339 @@
-// Mobile menu toggle
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Category tabs functionality
-const categoryTabs = document.querySelectorAll('.category-tab');
-categoryTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        categoryTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        // Here you would filter tokens based on category
-        console.log('Selected category:', tab.textContent);
-    });
-});
-
-// View toggle functionality
-const viewBtns = document.querySelectorAll('.view-btn');
-viewBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        viewBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        // Here you would change the view layout
-        console.log('Selected view:', btn.dataset.view);
-    });
-});
-
-// Token search functionality
-const searchInput = document.querySelector('.search-bar input');
-if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        // Here you would filter tokens based on search term
-        console.log('Search term:', searchTerm);
-    });
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #0a0a0a;
+    overflow-x: hidden;
 }
 
-// Modal functionality
-const modals = document.querySelectorAll('.modal-overlay');
-const modalTriggers = document.querySelectorAll('[data-modal]');
-const modalCloses = document.querySelectorAll('.modal-close');
-
-modalTriggers.forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        const modalId = trigger.dataset.modal;
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.add('active');
-        }
-    });
-});
-
-modalCloses.forEach(close => {
-    close.addEventListener('click', () => {
-        modals.forEach(modal => modal.classList.remove('active'));
-    });
-});
-
-modals.forEach(modal => {
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-        }
-    });
-});
-
-// Swap functionality
-const swapArrowBtn = document.querySelector('.swap-arrow-btn');
-if (swapArrowBtn) {
-    swapArrowBtn.addEventListener('click', () => {
-        const fromInput = document.querySelector('#fromAmount');
-        const toInput = document.querySelector('#toAmount');
-        const fromToken = document.querySelector('#fromToken');
-        const toToken = document.querySelector('#toToken');
-        
-        // Swap values
-        if (fromInput && toInput) {
-            const tempValue = fromInput.value;
-            fromInput.value = toInput.value;
-            toInput.value = tempValue;
-        }
-        
-        // Swap tokens
-        if (fromToken && toToken) {
-            const tempToken = fromToken.textContent;
-            fromToken.textContent = toToken.textContent;
-            toToken.textContent = tempToken;
-        }
-    });
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-// Token amount calculation
-const fromAmountInput = document.querySelector('#fromAmount');
-const toAmountInput = document.querySelector('#toAmount');
-
-if (fromAmountInput && toAmountInput) {
-    fromAmountInput.addEventListener('input', (e) => {
-        const amount = parseFloat(e.target.value) || 0;
-        // Simple conversion rate for demo (1:1.05)
-        const convertedAmount = amount * 1.05;
-        toAmountInput.value = convertedAmount.toFixed(6);
-        
-        // Update swap details
-        updateSwapDetails(amount, convertedAmount);
-    });
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
-function updateSwapDetails(fromAmount, toAmount) {
-    const priceImpact = document.getElementById('priceImpact');
-    const minimumReceived = document.getElementById('minimumReceived');
-    const networkFee = document.getElementById('networkFee');
-    
-    if (priceImpact) {
-        const impact = Math.random() * 0.1; // Random impact for demo
-        priceImpact.textContent = `${impact.toFixed(2)}%`;
-        priceImpact.className = impact > 0.05 ? 'negative' : 'positive';
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.brand-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: #e91e63;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.btn-connect-wallet {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-connect-wallet:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    font-size: 0.95rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #e91e63;
+    border: 2px solid #e91e63;
+}
+
+.btn-secondary:hover {
+    background: #e91e63;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-primary.large, .btn-secondary.large {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #fff, #ff6b6b);
+    background: linear-gradient(135deg, #fff, #e91e63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Charity Auction Preview */
+.charity-auction-preview {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.swap-container {
+    max-width: 800px;
+    margin: 0 auto;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.swap-container {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #fff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.charity-auction-preview h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    text-align: center;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.charity-auction-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(233, 30, 99, 0.3);
+}
+
+.charity-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.charity-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(233, 30, 99, 0.5);
+}
+
+.charity-info {
+    flex: 1;
+}
+
+.charity-name {
+    font-weight: 600;
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.charity-symbol {
+    color: #e91e63;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.charity-cause {
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.charity-details {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.current-bid {
+    text-align: center;
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.bid-label {
+    display: block;
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.bid-amount {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #e91e63;
+    margin-bottom: 0.25rem;
+}
+
+.bid-count {
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.charity-timer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.timer-unit {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.75rem 0.5rem;
+    min-width: 50px;
+}
+
+.time-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #e91e63;
+    font-family: 'Courier New', monospace;
+}
+
+.time-label {
+    font-size: 0.7rem;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.charity-benefits {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.benefit-title {
+    color: #e91e63;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.benefit-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefit-list li {
+    color: #ccc;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.btn-bid-charity {
+    width: 100%;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-bid-charity:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+}
+
+/* Categories */
+.categories {
+    padding: 4rem 0 2rem;
+    background: #111;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.category-tab {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.category-tab:hover,
+.category-tab.active {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* Token Grid */
+.token-grid {
+    padding: 2rem 0 6rem;
+    background: #111;
+}
+
+.grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.grid-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sort-options select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.view-toggle {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.view-btn {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn.active,
+.view-btn:hover {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+}
+
+.search-bar {
+    position: relative;
+    max-width: 300px;
+    width: 100%;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+}
+
+.search-bar input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 12px 15px 12px 45px;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: #e91e63;
+}
+
+.search-bar input::placeholder {
+    color: #666;
+}
+
+/* Token Cards */
+.tokens-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.token-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.token-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #e91e63, #9c27b0);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.token-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(233, 30, 99, 0.1);
+    border-color: rgba(233, 30, 99, 0.3);
+}
+
+.token-card:hover::before {
+    opacity: 1;
+}
+
+.token-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.token-card-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.token-card-info h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.token-card-symbol {
+    color: #e91e63;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.token-card-category {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 107, 107, 0.2);
+    background: rgba(233, 30, 99, 0.2);
+    color: #e91e63;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.token-card-description {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.token-card-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.token-stat {
+    text-align: center;
+}
+
+.token-stat-value {
+    display: block;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.token-stat-label {
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.token-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.token-price-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.token-current-price {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.token-price-change {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.token-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+}
+
+.load-more {
+    text-align: center;
+}
+
+/* Token Swap Section */
+.token-swap-section {
+    padding: 6rem 0;
+    background: #0a0a0a;
+.swap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.swap-header h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.settings-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e91e63;
+}
+
+.swap-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.swap-input-group {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.swap-input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.swap-input-header span:first-child {
+    color: #ccc;
+    font-weight: 500;
+}
+
+.balance {
+    color: #e91e63;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.balance:hover {
+    text-decoration: underline;
+}
+
+.swap-input-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.swap-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    outline: none;
+}
+
+.swap-input::placeholder {
+    color: #666;
+}
+
+.token-select-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 8px 12px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.token-select-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #e91e63;
+}
+
+.token-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.swap-arrow {
+    display: flex;
+    justify-content: center;
+    margin: -0.5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.swap-arrow-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ccc;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swap-arrow-btn:hover {
+    background: rgba(233, 30, 99, 0.2);
+    border-color: #e91e63;
+    color: #e91e63;
+    transform: rotate(180deg);
+}
+
+.swap-details {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.detail-row span:first-child {
+    color: #ccc;
+}
+
+.detail-row span:last-child {
+    color: #fff;
+    font-weight: 600;
+}
+
+.positive {
+    color: #4ade80 !important;
+}
+
+.negative {
+    color: #f87171 !important;
+}
+
+.btn-swap {
+    width: 100%;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.btn-swap:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
+}
+
+.btn-swap:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Sticky Wallet Sidebar */
+.wallet-sidebar {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 320px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    z-index: 999;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.wallet-sidebar.hidden {
+    transform: translateX(100%);
+}
+
+.wallet-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wallet-sidebar-header h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.wallet-close-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.wallet-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.wallet-sidebar-balance {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    border-radius: 12px;
+}
+
+.sidebar-balance-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e91e63;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-balance-label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.wallet-sidebar-tokens {
+    margin-bottom: 2rem;
+}
+
+.wallet-sidebar-tokens h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.sidebar-token-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar-token-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-token-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar-token-info {
+    flex: 1;
+}
+
+.sidebar-token-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-token-symbol {
+    color: #e91e63;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.sidebar-token-balance {
+    text-align: right;
+}
+
+.sidebar-token-amount {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+}
+
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.wallet-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.wallet-sidebar-balance {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    border-radius: 12px;
+}
+
+.sidebar-balance-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e91e63;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-balance-label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.wallet-sidebar-tokens {
+    margin-bottom: 2rem;
+}
+
+.wallet-sidebar-tokens h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.sidebar-token-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar-token-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-token-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar-token-info {
+    flex: 1;
+}
+
+.sidebar-token-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-token-symbol {
+    color: #e91e63;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.sidebar-token-balance {
+    text-align: right;
+}
+
+.sidebar-token-amount {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+}
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar-token-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-token-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar-token-info {
+    flex: 1;
+}
+
+.sidebar-token-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-token-symbol {
+    color: #e91e63;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.sidebar-token-balance {
+    text-align: right;
+}
+
+.sidebar-token-amount {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.sidebar-token-value {
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.wallet-actions {
+    margin-top: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.wallet-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.wallet-sidebar-balance {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    border-radius: 12px;
+}
+
+.sidebar-balance-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e91e63;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-balance-label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.wallet-sidebar-tokens {
+    margin-bottom: 2rem;
+}
+
+.wallet-sidebar-tokens h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.sidebar-token-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar-token-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-token-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar-token-info {
+    flex: 1;
+}
+
+.sidebar-token-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-token-symbol {
+    color: #e91e63;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.sidebar-token-balance {
+    text-align: right;
+}
+
+.sidebar-token-amount {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+}
+
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+}
+
+.modal.large {
+    max-width: 800px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.token-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.token-modal-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.token-symbol {
+    color: #e91e63;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group label {
+    display: block;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #e91e63;
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #666;
+}
+
+.avatar-upload {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-preview {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #ccc;
+}
+
+.avatar-preview:hover {
+    border-color: #e91e63;
+    color: #e91e63;
+}
+
+.avatar-preview i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.avatar-preview span {
+    font-size: 0.8rem;
+}
+
+.social-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.creation-cost {
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.cost-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cost-item {
+    display: flex;
+    justify-content: space-between;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.cost-item.total {
+    border-top: 1px solid rgba(255, 107, 107, 0.3);
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Token Detail Modal */
+.token-detail-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.price-info {
+    margin-bottom: 1rem;
+}
+
+.current-price {
+    margin-bottom: 1rem;
+}
+
+.price-label {
+    display: block;
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.price-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 0.5rem;
+}
+
+.price-change {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.token-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    color: #ccc;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.chart-placeholder {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+.trading-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.trade-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.trade-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #ccc;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.trade-tab.active,
+.trade-tab:hover {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+}
+
+.trade-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.trade-form.hidden {
+    display: none;
+}
+
+.trade-input-group {
+    position: relative;
+}
+
+.input-with-max {
+    position: relative;
+}
+
+.max-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.max-btn:hover {
+    background: linear-gradient(135deg, #c2185b, #7b1fa2);
+}
+
+.trade-estimate {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.estimate-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.estimate-row:last-child {
+    margin-bottom: 0;
+}
+
+.token-description {
+    margin-bottom: 2rem;
+}
+
+.token-description h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.token-description p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.token-social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    color: #ccc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Wallet Modal */
+.wallet-content {
+    display: grid;
+    gap: 2rem;
+}
+
+.wallet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.wallet-address {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wallet-address-text {
+    font-family: 'Courier New', monospace;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.copy-btn {
+    background: rgba(233, 30, 99, 0.2);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    color: #e91e63;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.copy-btn:hover {
+    background: rgba(233, 30, 99, 0.3);
+}
+
+.wallet-balance {
+    text-align: right;
+}
+
+.balance-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e91e63;
+    display: block;
+}
+
+.balance-label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.wallet-tokens {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.wallet-tokens h4 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.token-list-wallet {
+    display: grid;
+    gap: 1rem;
+}
+
+.wallet-token-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.wallet-token-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.wallet-token-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.wallet-token-info {
+    flex: 1;
+}
+
+.wallet-token-name {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.wallet-token-symbol {
+    color: #e91e63;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.wallet-token-balance {
+    text-align: right;
+}
+
+.token-amount {
+    color: #fff;
+    font-weight: 600;
+    display: block;
+}
+
+.token-value {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.empty-wallet {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #ccc;
+}
+
+.empty-wallet i {
+    font-size: 3rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.empty-wallet h4 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+/* Charity Bid Modal */
+.charity-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.charity-bid-content {
+    display: grid;
+    gap: 2rem;
+}
+
+.charity-cause-info {
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.charity-cause-info h4 {
+    color: #e91e63;
+    margin-bottom: 1rem;
+}
+
+.charity-cause-info p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.current-bid-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.bid-info {
+    text-align: center;
+}
+
+.bid-amount-large {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #e91e63;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.bidder-count {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.charity-timer-large {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.charity-timer-large .timer-unit {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 1rem 0.75rem;
+    min-width: 60px;
+}
+
+.charity-timer-large .time-value {
+    font-size: 1.5rem;
+}
+
+.bid-form {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.bid-input-group {
+    margin-bottom: 2rem;
+}
+
+.bid-input-group label {
+    display: block;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.bid-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 15px;
+    color: #e91e63;
+    font-weight: 600;
+    font-size: 1.25rem;
+    z-index: 1;
+}
+
+.bid-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 15px 15px 15px 35px;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: border-color 0.3s ease;
+}
+
+.bid-input:focus {
+    outline: none;
+    border-color: #e91e63;
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+}
+
+.minimum-bid-info {
+    margin-top: 0.5rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.minimum-bid-info strong {
+    color: #e91e63;
+}
+
+.charity-benefits h5 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.charity-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.charity-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.charity-benefits li i {
+    color: #e91e63;
+    width: 16px;
+}
+
+.btn-place-charity-bid {
+    width: 100%;
+    background: linear-gradient(135deg, #e91e63, #9c27b0);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-place-charity-bid:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
+}
+
+/* Token Selector Modal */
+.token-search {
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #e91e63;
+}
+
+.search-input::placeholder {
+    color: #666;
+}
+
+.token-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.token-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.token-option:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.token-option-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.token-option-info {
+    flex: 1;
+}
+
+.token-option-name {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.token-option-symbol {
+    color: #e91e63;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.token-option-balance {
+    text-align: right;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+.footer {
+    background: #0a0a0a;
+    padding: 4rem 0 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.footer-brand span {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.footer-section p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.footer-section h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-section a {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #e91e63;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: #ccc;
+}
+
+.footer-disclaimer {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
     }
     
-    if (minimumReceived) {
-        const minimum = toAmount * 0.995; // 0.5% slippage
-        minimumReceived.textContent = `${minimum.toFixed(6)} ETH`;
+    .mobile-menu-toggle {
+        display: flex;
     }
     
-    if (networkFee) {
-        const fee = Math.random() * 0.01 + 0.005; // Random fee for demo
-        networkFee.textContent = `$${fee.toFixed(3)}`;
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+        gap: 2rem;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .charity-auction-preview {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .swap-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .wallet-sidebar {
+        display: none;
+    }
+    
+    .swap-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .current-bid-display {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .charity-timer {
+        gap: 0.5rem;
+    }
+    
+    .charity-timer-large {
+        gap: 0.5rem;
+    }
+    
+    .category-tabs {
+        gap: 0.5rem;
+    }
+    
+    .category-tab {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .grid-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .grid-controls {
+        justify-content: center;
+    }
+    
+    .tokens-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .token-detail-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
     }
 }
 
-// Wallet sidebar functionality
-const walletToggle = document.querySelector('.btn-connect-wallet');
-const walletSidebar = document.querySelector('.wallet-sidebar');
-const walletClose = document.querySelector('.wallet-close-btn');
-
-if (walletToggle && walletSidebar) {
-    walletToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        walletSidebar.classList.toggle('hidden');
-    });
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .modal {
+        width: 95%;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .token-card {
+        padding: 1rem;
+    }
+    
+    .swap-card {
+        padding: 1.5rem;
+    }
 }
 
-if (walletClose && walletSidebar) {
-    walletClose.addEventListener('click', () => {
-        walletSidebar.classList.add('hidden');
-    });
+/* Additional utility classes */
+.positive {
+    color: #4ade80 !important;
 }
 
-// Close wallet sidebar when clicking outside
-document.addEventListener('click', (e) => {
-    if (walletSidebar && !walletSidebar.contains(e.target) && !walletToggle.contains(e.target)) {
-        walletSidebar.classList.add('hidden');
-    }
-});
-
-// Charity auction timer
-function updateCharityTimer() {
-    const timerElements = document.querySelectorAll('.charity-timer .time-value');
-    const endTime = new Date().getTime() + (2 * 24 * 60 * 60 * 1000); // 2 days from now
-    
-    setInterval(() => {
-        const now = new Date().getTime();
-        const distance = endTime - now;
-        
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        if (timerElements.length >= 4) {
-            timerElements[0].textContent = days.toString().padStart(2, '0');
-            timerElements[1].textContent = hours.toString().padStart(2, '0');
-            timerElements[2].textContent = minutes.toString().padStart(2, '0');
-            timerElements[3].textContent = seconds.toString().padStart(2, '0');
-        }
-        
-        if (distance < 0) {
-            timerElements.forEach(el => el.textContent = '00');
-        }
-    }, 1000);
+.negative {
+    color: #f87171 !important;
 }
 
-// Initialize charity timer
-updateCharityTimer();
-
-// Token card interactions
-document.querySelectorAll('.token-card').forEach(card => {
-    card.addEventListener('click', () => {
-        const tokenName = card.querySelector('.token-card-info h3').textContent;
-        console.log('Selected token:', tokenName);
-        // Here you would open token details modal
-    });
-});
-
-// Balance click to max functionality
-document.querySelectorAll('.balance').forEach(balance => {
-    balance.addEventListener('click', (e) => {
-        const input = e.target.closest('.swap-input-group').querySelector('.swap-input');
-        if (input) {
-            input.value = '1000.0'; // Demo max balance
-            input.dispatchEvent(new Event('input'));
-        }
-    });
-});
-
-// Copy wallet address functionality
-const copyBtns = document.querySelectorAll('.copy-btn');
-copyBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const address = '0x742d35Cc6634C0532925a3b8D';
-        navigator.clipboard.writeText(address).then(() => {
-            btn.textContent = 'Copied!';
-            setTimeout(() => {
-                btn.textContent = 'Copy';
-            }, 2000);
-        });
-    });
-});
-
-// Initialize page
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('TokenSwap DApp initialized');
-    
-    // Set initial active states
-    const firstCategoryTab = document.querySelector('.category-tab');
-    if (firstCategoryTab) {
-        firstCategoryTab.classList.add('active');
-    }
-    
-    const firstViewBtn = document.querySelector('.view-btn');
-    if (firstViewBtn) {
-        firstViewBtn.classList.add('active');
-    }
-    
-    // Hide wallet sidebar initially
-    if (walletSidebar) {
-        walletSidebar.classList.add('hidden');
-    }
-});
+.hidden {
+    display: none !important;
+}
