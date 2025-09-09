@@ -263,6 +263,13 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.swap-container {
+    max-width: 800px;
+    margin: 0 auto;
     color: #fff;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
@@ -721,14 +728,6 @@ body {
 .token-swap-section {
     padding: 6rem 0;
     background: #0a0a0a;
-}
-
-.swap-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 2rem;
-    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -826,7 +825,8 @@ body {
 
 .token-select-btn {
     display: flex;
-    align-items: center;
+    align-items
+}: center;
     gap: 8px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1077,6 +1077,106 @@ body {
     display: block;
 }
 
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.wallet-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.wallet-sidebar-balance {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    border-radius: 12px;
+}
+
+.sidebar-balance-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e91e63;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-balance-label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.wallet-sidebar-tokens {
+    margin-bottom: 2rem;
+}
+
+.wallet-sidebar-tokens h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.sidebar-token-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar-token-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-token-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar-token-info {
+    flex: 1;
+}
+
+.sidebar-token-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-token-symbol {
+    color: #e91e63;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.sidebar-token-balance {
+    text-align: right;
+}
+
+.sidebar-token-amount {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.sidebar-token-value {
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.wallet-actions {
+    margin-top: 1rem;
 }
 
 /* Modals */
@@ -1987,6 +2087,11 @@ body {
     .swap-container {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    
+    .wallet-sidebar {
+        display: none;
+    }
     }
     
     .current-bid-display {
