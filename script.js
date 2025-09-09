@@ -1,1982 +1,539 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: #0a0a0a;
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Navigation */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(20px);
-    z-index: 1000;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-}
-
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
-}
-
-.brand-text {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #fff;
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.nav-links a {
-    color: #ccc;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-.nav-links a:hover {
-    color: #e91e63;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.btn-connect-wallet {
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-connect-wallet:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
-}
-
-.mobile-menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.mobile-menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: #fff;
-    margin: 3px 0;
-    transition: 0.3s;
-}
-
-/* Buttons */
-.btn-primary, .btn-secondary {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-align: center;
-    font-size: 0.95rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    color: white;
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
-}
-
-.btn-primary:active {
-    transform: translateY(0);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: #e91e63;
-    border: 2px solid #e91e63;
-}
-
-.btn-secondary:hover {
-    background: #e91e63;
-    color: white;
-    transform: translateY(-2px);
-}
-
-.btn-primary.large, .btn-secondary.large {
-    padding: 16px 32px;
-    font-size: 1.1rem;
-}
-
-.full-width {
-    width: 100%;
-}
-
-/* Hero Section */
-.hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-    overflow: hidden;
-    padding-top: 80px;
-}
-
-.hero-content {
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 4rem;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-text h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-    background: linear-gradient(135deg, #fff, #ff6b6b);
-    background: linear-gradient(135deg, #fff, #e91e63);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    color: #ccc;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-}
-
-.hero-stats {
-    display: flex;
-    gap: 3rem;
-    margin-bottom: 2rem;
-}
-
-.stat {
-    text-align: center;
-}
-
-.stat-number {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.stat-label {
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.hero-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-/* Charity Auction Preview */
-.charity-auction-preview {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 2rem;
-    color: #fff;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.charity-auction-preview h3 {
-    margin-bottom: 1.5rem;
-    font-size: 1.25rem;
-    text-align: center;
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.charity-auction-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 1.5rem;
-    border: 1px solid rgba(233, 30, 99, 0.3);
-}
-
-.charity-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.charity-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(233, 30, 99, 0.5);
-}
-
-.charity-info {
-    flex: 1;
-}
-
-.charity-name {
-    font-weight: 600;
-    color: #fff;
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
-}
-
-.charity-symbol {
-    color: #e91e63;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-}
-
-.charity-cause {
-    color: #ccc;
-    font-size: 0.8rem;
-}
-
-.charity-details {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.current-bid {
-    text-align: center;
-    background: rgba(233, 30, 99, 0.1);
-    border: 1px solid rgba(233, 30, 99, 0.3);
-    border-radius: 12px;
-    padding: 1rem;
-}
-
-.bid-label {
-    display: block;
-    color: #ccc;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-.bid-amount {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #e91e63;
-    margin-bottom: 0.25rem;
-}
-
-.bid-count {
-    color: #ccc;
-    font-size: 0.8rem;
-}
-
-.charity-timer {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.timer-unit {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 0.75rem 0.5rem;
-    min-width: 50px;
-}
-
-.time-value {
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #e91e63;
-    font-family: 'Courier New', monospace;
-}
-
-.time-label {
-    font-size: 0.7rem;
-    color: #ccc;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.charity-benefits {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.benefit-title {
-    color: #e91e63;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-.benefit-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.benefit-list li {
-    color: #ccc;
-    font-size: 0.8rem;
-    margin-bottom: 0.25rem;
-}
-
-.btn-bid-charity {
-    width: 100%;
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.btn-bid-charity:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
-}
-
-/* Categories */
-.categories {
-    padding: 4rem 0 2rem;
-    background: #111;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.section-header h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.section-header p {
-    font-size: 1.1rem;
-    color: #ccc;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.category-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.category-tab {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ccc;
-    padding: 12px 24px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.category-tab:hover,
-.category-tab.active {
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    color: white;
-    border-color: transparent;
-    transform: translateY(-2px);
-}
-
-/* Token Grid */
-.token-grid {
-    padding: 2rem 0 6rem;
-    background: #111;
-}
-
-.grid-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    gap: 2rem;
-}
-
-.grid-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.sort-options select {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.view-toggle {
-    display: flex;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.view-btn {
-    background: transparent;
-    border: none;
-    color: #ccc;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.view-btn.active,
-.view-btn:hover {
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    color: white;
-}
-
-.search-bar {
-    position: relative;
-    max-width: 300px;
-    width: 100%;
-}
-
-.search-bar i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #ccc;
-}
-
-.search-bar input {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    padding: 12px 15px 12px 45px;
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
-}
-
-.search-bar input:focus {
-    outline: none;
-    border-color: #e91e63;
-}
-
-.search-bar input::placeholder {
-    color: #666;
-}
-
-/* Token Cards */
-.tokens-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-}
-
-.token-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.token-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #e91e63, #9c27b0);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.token-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(233, 30, 99, 0.1);
-    border-color: rgba(233, 30, 99, 0.3);
-}
-
-.token-card:hover::before {
-    opacity: 1;
-}
-
-.token-card-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 1rem;
-}
-
-.token-card-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.token-card-info h3 {
-    color: #fff;
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
-}
-
-.token-card-symbol {
-    color: #e91e63;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.token-card-category {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: rgba(255, 107, 107, 0.2);
-    background: rgba(233, 30, 99, 0.2);
-    color: #e91e63;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 500;
-}
-
-.token-card-description {
-    color: #ccc;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin-bottom: 1rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.token-card-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.token-stat {
-    text-align: center;
-}
-
-.token-stat-value {
-    display: block;
-    color: #fff;
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.token-stat-label {
-    color: #ccc;
-    font-size: 0.8rem;
-}
-
-.token-card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.token-price-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.token-current-price {
-    color: #fff;
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-.token-price-change {
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.token-actions {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.btn-small {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-    border-radius: 6px;
-}
-
-.load-more {
-    text-align: center;
-}
-
-/* Token Swap Section */
-.token-swap-section {
-    padding: 4rem 0;
-    background: #111;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.swap-container {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 3rem;
-    align-items: start;
-}
-
-.swap-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 2rem;
-}
-
-.swap-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.swap-header h3 {
-    color: #fff;
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.settings-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ccc;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.settings-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #e91e63;
-}
-
-.swap-form {
-    display: grid;
-    gap: 1rem;
-}
-
-.swap-input-group {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 1.5rem;
-}
-
-.swap-input-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-}
-
-.swap-input-header span:first-child {
-    color: #ccc;
-    font-weight: 500;
-}
-
-.balance {
-    color: #e91e63;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.balance:hover {
-    text-decoration: underline;
-}
-
-.swap-input-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.swap-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: 600;
-    outline: none;
-}
-
-.swap-input::placeholder {
-    color: #666;
-}
-
-.token-select-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    padding: 8px 12px;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-}
-
-.token-select-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: #e91e63;
-}
-
-.token-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.swap-arrow {
-    display: flex;
-    justify-content: center;
-    margin: -0.5rem 0;
-    position: relative;
-    z-index: 1;
-}
-
-.swap-arrow-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    color: #ccc;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.swap-arrow-btn:hover {
-    background: rgba(233, 30, 99, 0.2);
-    border-color: #e91e63;
-    color: #e91e63;
-    transform: rotate(180deg);
-}
-
-.swap-details {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 1rem;
-    margin-top: 1rem;
-}
-
-.detail-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-}
-
-.detail-row:last-child {
-    margin-bottom: 0;
-}
-
-.detail-row span:first-child {
-    color: #ccc;
-}
-
-.detail-row span:last-child {
-    color: #fff;
-    font-weight: 600;
-}
-
-.positive {
-    color: #4ade80 !important;
-}
-
-.negative {
-    color: #f87171 !important;
-}
-
-.btn-swap {
-    width: 100%;
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    color: white;
-    border: none;
-    padding: 16px 24px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 1rem;
-}
-
-.btn-swap:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
-}
-
-.btn-swap:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.swap-info {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 2rem;
-    height: fit-content;
-}
-
-.swap-info h4 {
-    color: #fff;
-    margin-bottom: 1.5rem;
-    font-size: 1.25rem;
-}
-
-.swap-features {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.swap-features .feature-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-}
-
-.swap-features .feature-item i {
-    color: #e91e63;
-    font-size: 1.25rem;
-    margin-top: 0.25rem;
-}
-
-.swap-features .feature-item strong {
-    color: #fff;
-    display: block;
-    margin-bottom: 0.25rem;
-}
-
-.swap-features .feature-item p {
-    color: #ccc;
-    font-size: 0.9rem;
-    margin: 0;
-}
-
-/* Modals */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal {
-    background: #1a1a1a;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    max-width: 500px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-}
-
-.modal-overlay.active .modal {
-    transform: scale(1);
-}
-
-.modal.large {
-    max-width: 800px;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 2rem 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.modal-header h3 {
-    color: #fff;
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.token-header-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.token-modal-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.token-symbol {
-    color: #e91e63;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.modal-close {
-    background: none;
-    border: none;
-    color: #ccc;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.modal-close:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-}
-
-.modal-body {
-    padding: 2rem;
-}
-
-/* Form Styles */
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
-
-.form-group label {
-    display: block;
-    color: #fff;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    padding: 12px;
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
-    font-family: inherit;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #e91e63;
-    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: #666;
-}
-
-.avatar-upload {
-    display: flex;
-    justify-content: center;
-}
-
-.avatar-preview {
-    width: 100px;
-    height: 100px;
-    border: 2px dashed rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: #ccc;
-}
-
-.avatar-preview:hover {
-    border-color: #e91e63;
-    color: #e91e63;
-}
-
-.avatar-preview i {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.avatar-preview span {
-    font-size: 0.8rem;
-}
-
-.social-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.creation-cost {
-    background: rgba(255, 107, 107, 0.1);
-    border: 1px solid rgba(255, 107, 107, 0.3);
-    border-radius: 12px;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.cost-breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.cost-item {
-    display: flex;
-    justify-content: space-between;
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.cost-item.total {
-    border-top: 1px solid rgba(255, 107, 107, 0.3);
-    padding-top: 0.5rem;
-    margin-top: 0.5rem;
-    color: #fff;
-    font-weight: 600;
-}
-
-/* Token Detail Modal */
-.token-detail-content {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.price-info {
-    margin-bottom: 1rem;
-}
-
-.current-price {
-    margin-bottom: 1rem;
-}
-
-.price-label {
-    display: block;
-    color: #ccc;
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-}
-
-.price-value {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #fff;
-    margin-right: 0.5rem;
-}
-
-.price-change {
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.token-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-label {
-    display: block;
-    color: #ccc;
-    font-size: 0.8rem;
-    margin-bottom: 0.25rem;
-}
-
-.stat-value {
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.chart-placeholder {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 1rem;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-}
-
-.trading-section {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 1.5rem;
-}
-
-.trade-tabs {
-    display: flex;
-    margin-bottom: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.trade-tab {
-    flex: 1;
-    background: none;
-    border: none;
-    color: #ccc;
-    padding: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.trade-tab.active,
-.trade-tab:hover {
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    color: white;
-}
-
-.trade-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.trade-form.hidden {
-    display: none;
-}
-
-.trade-input-group {
-    position: relative;
-}
-
-.input-with-max {
-    position: relative;
-}
-
-.max-btn {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    color: white;
-    border: none;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.max-btn:hover {
-    background: linear-gradient(135deg, #c2185b, #7b1fa2);
-}
-
-.trade-estimate {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.estimate-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.estimate-row:last-child {
-    margin-bottom: 0;
-}
-
-.token-description {
-    margin-bottom: 2rem;
-}
-
-.token-description h4 {
-    color: #fff;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.token-description p {
-    color: #ccc;
-    line-height: 1.6;
-}
-
-.token-social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-    color: #ccc;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.social-link:hover {
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* Wallet Modal */
-.wallet-content {
-    display: grid;
-    gap: 2rem;
-}
-
-.wallet-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-}
-
-.wallet-address {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.wallet-address-text {
-    font-family: 'Courier New', monospace;
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.copy-btn {
-    background: rgba(233, 30, 99, 0.2);
-    border: 1px solid rgba(233, 30, 99, 0.3);
-    color: #e91e63;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.8rem;
-}
-
-.copy-btn:hover {
-    background: rgba(233, 30, 99, 0.3);
-}
-
-.wallet-balance {
-    text-align: right;
-}
-
-.balance-amount {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #e91e63;
-    display: block;
-}
-
-.balance-label {
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.wallet-tokens {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 1.5rem;
-}
-
-.wallet-tokens h4 {
-    color: #fff;
-    margin-bottom: 1.5rem;
-    font-size: 1.25rem;
-}
-
-.token-list-wallet {
-    display: grid;
-    gap: 1rem;
-}
-
-.wallet-token-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.wallet-token-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.wallet-token-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.wallet-token-info {
-    flex: 1;
-}
-
-.wallet-token-name {
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.wallet-token-symbol {
-    color: #e91e63;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.wallet-token-balance {
-    text-align: right;
-}
-
-.token-amount {
-    color: #fff;
-    font-weight: 600;
-    display: block;
-}
-
-.token-value {
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.empty-wallet {
-    text-align: center;
-    padding: 3rem 2rem;
-    color: #ccc;
-}
-
-.empty-wallet i {
-    font-size: 3rem;
-    color: #666;
-    margin-bottom: 1rem;
-}
-
-.empty-wallet h4 {
-    color: #fff;
-    margin-bottom: 0.5rem;
-}
-
-/* Charity Bid Modal */
-.charity-modal-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.charity-bid-content {
-    display: grid;
-    gap: 2rem;
-}
-
-.charity-cause-info {
-    background: rgba(233, 30, 99, 0.1);
-    border: 1px solid rgba(233, 30, 99, 0.3);
-    border-radius: 12px;
-    padding: 1.5rem;
-}
-
-.charity-cause-info h4 {
-    color: #e91e63;
-    margin-bottom: 1rem;
-}
-
-.charity-cause-info p {
-    color: #ccc;
-    line-height: 1.6;
-}
-
-.current-bid-display {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
-}
-
-.bid-info {
-    text-align: center;
-}
-
-.bid-amount-large {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #e91e63;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.bidder-count {
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.charity-timer-large {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.charity-timer-large .timer-unit {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    padding: 1rem 0.75rem;
-    min-width: 60px;
-}
-
-.charity-timer-large .time-value {
-    font-size: 1.5rem;
-}
-
-.bid-form {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 2rem;
-}
-
-.bid-input-group {
-    margin-bottom: 2rem;
-}
-
-.bid-input-group label {
-    display: block;
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.bid-input-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.currency-symbol {
-    position: absolute;
-    left: 15px;
-    color: #e91e63;
-    font-weight: 600;
-    font-size: 1.25rem;
-    z-index: 1;
-}
-
-.bid-input {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    padding: 15px 15px 15px 35px;
-    border-radius: 8px;
-    font-size: 1.25rem;
-    font-weight: 600;
-    transition: border-color 0.3s ease;
-}
-
-.bid-input:focus {
-    outline: none;
-    border-color: #e91e63;
-    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
-}
-
-.minimum-bid-info {
-    margin-top: 0.5rem;
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.minimum-bid-info strong {
-    color: #e91e63;
-}
-
-.charity-benefits h5 {
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.charity-benefits ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 0.75rem;
-}
-
-.charity-benefits li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.charity-benefits li i {
-    color: #e91e63;
-    width: 16px;
-}
-
-.btn-place-charity-bid {
-    width: 100%;
-    background: linear-gradient(135deg, #e91e63, #9c27b0);
-    color: white;
-    border: none;
-    padding: 16px 24px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.btn-place-charity-bid:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
-}
-
-/* Token Selector Modal */
-.token-search {
-    margin-bottom: 1.5rem;
-}
-
-.search-input {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    padding: 12px 16px;
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #e91e63;
-}
-
-.search-input::placeholder {
-    color: #666;
-}
-
-.token-list {
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.token-option {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 8px;
-}
-
-.token-option:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.token-option-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.token-option-info {
-    flex: 1;
-}
-
-.token-option-name {
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.token-option-symbol {
-    color: #e91e63;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.token-option-balance {
-    text-align: right;
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-/* Footer */
-.footer {
-    background: #0a0a0a;
-    padding: 4rem 0 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 2rem;
-}
-
-.footer-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 1rem;
-}
-
-.footer-brand span {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #fff;
-}
-
-.footer-section p {
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.footer-section h4 {
-    color: #fff;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.footer-section a {
-    display: block;
-    color: #ccc;
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-    transition: color 0.3s ease;
-}
-
-.footer-section a:hover {
-    color: #e91e63;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.footer-bottom {
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    color: #ccc;
-}
-
-.footer-disclaimer {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: rgba(233, 30, 99, 0.1);
-    border: 1px solid rgba(233, 30, 99, 0.3);
-    border-radius: 8px;
-    font-size: 0.9rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
+// Sample token data
+const sampleTokens = [
+    {
+        id: 1,
+        name: "Taylor Swift",
+        symbol: "TAYLOR",
+        avatar: "https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+        category: "music",
+        description: "Official fan token for Taylor Swift with exclusive access to concerts and merchandise.",
+        price: 12.50,
+        change: 8.5,
+        volume: 125000,
+        marketCap: 2500000,
+        holders: 15420
+    },
+    {
+        id: 2,
+        name: "MrBeast",
+        symbol: "BEAST",
+        avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+        category: "creators",
+        description: "Join MrBeast's community with exclusive challenges and behind-the-scenes content.",
+        price: 8.75,
+        change: -2.3,
+        volume: 89000,
+        marketCap: 1750000,
+        holders: 12890
+    },
+    {
+        id: 3,
+        name: "PewDiePie",
+        symbol: "PEWDS",
+        avatar: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+        category: "gaming",
+        description: "Gaming content creator token with access to exclusive streams and gaming sessions.",
+        price: 15.20,
+        change: 12.1,
+        volume: 156000,
+        marketCap: 3040000,
+        holders: 18750
+    },
+    {
+        id: 4,
+        name: "Dwayne Johnson",
+        symbol: "ROCK",
+        avatar: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+        category: "movies",
+        description: "The Rock's official token with movie premieres and fitness content access.",
+        price: 22.80,
+        change: 5.7,
+        volume: 203000,
+        marketCap: 4560000,
+        holders: 22100
+    },
+    {
+        id: 5,
+        name: "Ariana Grande",
+        symbol: "ARI",
+        avatar: "https://images.pexels.com/photos/1391498/pexels-photo-1391498.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+        category: "music",
+        description: "Pop sensation token with concert access and exclusive music releases.",
+        price: 18.90,
+        change: 15.2,
+        volume: 178000,
+        marketCap: 3780000,
+        holders: 19850
+    },
+    {
+        id: 6,
+        name: "Kevin Hart",
+        symbol: "HART",
+        avatar: "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+        category: "comedy",
+        description: "Comedy king token with stand-up show access and exclusive comedy content.",
+        price: 9.45,
+        change: -1.8,
+        volume: 67000,
+        marketCap: 1890000,
+        holders: 11200
+    }
+];
+
+let currentTokens = [...sampleTokens];
+let currentCategory = 'all';
+let currentSort = 'volume';
+
+// DOM Elements
+const tokensContainer = document.getElementById('tokensContainer');
+const categoryTabs = document.querySelectorAll('.category-tab');
+const sortSelect = document.getElementById('sortBy');
+const searchInput = document.getElementById('searchInput');
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', function() {
+    renderTokens();
+    setupEventListeners();
+    startCharityTimer();
+    updateSwapCalculation();
+});
+
+// Event Listeners
+function setupEventListeners() {
+    // Category tabs
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const category = this.dataset.category;
+            setActiveCategory(category);
+            filterTokens();
+        });
+    });
+
+    // Sort dropdown
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            currentSort = this.value;
+            sortTokens();
+            renderTokens();
+        });
+    }
+
+    // Search input
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            filterTokens();
+        });
+    }
+
+    // Swap inputs
+    const fromAmountInput = document.getElementById('fromAmount');
+    const toAmountInput = document.getElementById('toAmount');
+    
+    if (fromAmountInput) {
+        fromAmountInput.addEventListener('input', updateSwapCalculation);
+    }
+}
+
+// Category filtering
+function setActiveCategory(category) {
+    currentCategory = category;
+    categoryTabs.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.dataset.category === category) {
+            tab.classList.add('active');
+        }
+    });
+}
+
+function filterTokens() {
+    let filtered = [...sampleTokens];
+
+    // Filter by category
+    if (currentCategory !== 'all') {
+        filtered = filtered.filter(token => token.category === currentCategory);
+    }
+
+    // Filter by search
+    const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+    if (searchTerm) {
+        filtered = filtered.filter(token => 
+            token.name.toLowerCase().includes(searchTerm) ||
+            token.symbol.toLowerCase().includes(searchTerm)
+        );
+    }
+
+    currentTokens = filtered;
+    sortTokens();
+    renderTokens();
+}
+
+// Sorting
+function sortTokens() {
+    currentTokens.sort((a, b) => {
+        switch (currentSort) {
+            case 'price':
+                return b.price - a.price;
+            case 'change':
+                return b.change - a.change;
+            case 'marketcap':
+                return b.marketCap - a.marketCap;
+            case 'volume':
+            default:
+                return b.volume - a.volume;
+        }
+    });
+}
+
+// Render tokens
+function renderTokens() {
+    if (!tokensContainer) return;
+
+    tokensContainer.innerHTML = currentTokens.map(token => `
+        <div class="token-card" onclick="openTokenDetail(${token.id})">
+            <div class="token-card-category">${getCategoryEmoji(token.category)} ${token.category}</div>
+            <div class="token-card-header">
+                <img src="${token.avatar}" alt="${token.name}" class="token-card-avatar">
+                <div class="token-card-info">
+                    <h3>${token.name}</h3>
+                    <div class="token-card-symbol">$${token.symbol}</div>
+                </div>
+            </div>
+            <p class="token-card-description">${token.description}</p>
+            <div class="token-card-stats">
+                <div class="token-stat">
+                    <span class="token-stat-value">${formatNumber(token.volume)}</span>
+                    <span class="token-stat-label">Volume</span>
+                </div>
+                <div class="token-stat">
+                    <span class="token-stat-value">${formatNumber(token.holders)}</span>
+                    <span class="token-stat-label">Holders</span>
+                </div>
+            </div>
+            <div class="token-card-footer">
+                <div class="token-price-info">
+                    <span class="token-current-price">$${token.price.toFixed(2)}</span>
+                    <span class="token-price-change ${token.change >= 0 ? 'positive' : 'negative'}">
+                        ${token.change >= 0 ? '+' : ''}${token.change.toFixed(1)}%
+                    </span>
+                </div>
+                <div class="token-actions">
+                    <button class="btn-primary btn-small" onclick="event.stopPropagation(); buyToken(${token.id})">Buy</button>
+                    <button class="btn-secondary btn-small" onclick="event.stopPropagation(); sellToken(${token.id})">Sell</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Utility functions
+function getCategoryEmoji(category) {
+    const emojis = {
+        music: '🎵',
+        creators: '📹',
+        gaming: '🎮',
+        sports: '⚽',
+        movies: '🎬',
+        comedy: '😂'
+    };
+    return emojis[category] || '🎭';
+}
+
+function formatNumber(num) {
+    if (num >= 1000000) {
+        return (num / 1000000).toFixed(1) + 'M';
+    } else if (num >= 1000) {
+        return (num / 1000).toFixed(1) + 'K';
+    }
+    return num.toString();
+}
+
+// Modal functions
+function openWallet() {
+    const modal = document.getElementById('walletModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        populateWalletContent();
+    }
+}
+
+function closeWalletModal() {
+    const modal = document.getElementById('walletModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+function openCharityBidModal() {
+    const modal = document.getElementById('charityBidModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeCharityBidModal() {
+    const modal = document.getElementById('charityBidModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+function openTokenSelector(type) {
+    const modal = document.getElementById('tokenSelectorModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        populateTokenSelector(type);
+    }
+}
+
+function closeTokenSelector() {
+    const modal = document.getElementById('tokenSelectorModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Navigation functions
+function scrollToTrending() {
+    const trendingSection = document.getElementById('trending');
+    if (trendingSection) {
+        trendingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+// Wallet functions
+function populateWalletContent() {
+    const walletContent = document.getElementById('walletContent');
+    if (!walletContent) return;
+
+    const walletTokens = [
+        { name: 'FanKoin', symbol: 'FAN', amount: 1000, value: 1000, avatar: 'https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop' },
+        { name: 'Taylor Swift', symbol: 'TAYLOR', amount: 25, value: 312.50, avatar: 'https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop' },
+        { name: 'MrBeast', symbol: 'BEAST', amount: 50, value: 437.50, avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop' }
+    ];
+
+    const totalValue = walletTokens.reduce((sum, token) => sum + token.value, 0);
+
+    walletContent.innerHTML = `
+        <div class="wallet-header">
+            <div class="wallet-address">
+                <span class="wallet-address-text">0x742d...4e8f</span>
+                <button class="copy-btn" onclick="copyAddress()">Copy</button>
+            </div>
+            <div class="wallet-balance">
+                <span class="balance-amount">$${totalValue.toFixed(2)}</span>
+                <span class="balance-label">Total Balance</span>
+            </div>
+        </div>
+        <div class="wallet-tokens">
+            <h4>Your Tokens</h4>
+            <div class="token-list-wallet">
+                ${walletTokens.map(token => `
+                    <div class="wallet-token-item">
+                        <img src="${token.avatar}" alt="${token.name}" class="wallet-token-avatar">
+                        <div class="wallet-token-info">
+                            <div class="wallet-token-name">${token.name}</div>
+                            <div class="wallet-token-symbol">$${token.symbol}</div>
+                        </div>
+                        <div class="wallet-token-balance">
+                            <span class="token-amount">${token.amount}</span>
+                            <span class="token-value">$${token.value.toFixed(2)}</span>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+}
+
+// Token selector functions
+function populateTokenSelector(type) {
+    const tokenList = document.getElementById('tokenList');
+    if (!tokenList) return;
+
+    const tokens = [
+        { name: 'FanKoin', symbol: 'FAN', balance: 1000, avatar: 'https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop' },
+        { name: 'Taylor Swift', symbol: 'TAYLOR', balance: 25, avatar: 'https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop' },
+        { name: 'MrBeast', symbol: 'BEAST', balance: 50, avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop' }
+    ];
+
+    tokenList.innerHTML = tokens.map(token => `
+        <div class="token-option" onclick="selectToken('${type}', '${token.symbol}', '${token.name}', '${token.avatar}', ${token.balance})">
+            <img src="${token.avatar}" alt="${token.name}" class="token-option-avatar">
+            <div class="token-option-info">
+                <div class="token-option-name">${token.name}</div>
+                <div class="token-option-symbol">$${token.symbol}</div>
+            </div>
+            <div class="token-option-balance">${token.balance}</div>
+        </div>
+    `).join('');
+}
+
+function selectToken(type, symbol, name, avatar, balance) {
+    const tokenElement = document.getElementById(`${type}Token`);
+    const balanceElement = document.getElementById(`${type}Balance`);
+    const iconElement = document.querySelector(`#${type}Token`).parentElement.querySelector('.token-icon');
+    
+    if (tokenElement) tokenElement.textContent = symbol;
+    if (balanceElement) balanceElement.textContent = balance.toLocaleString();
+    if (iconElement) iconElement.src = avatar;
+    
+    closeTokenSelector();
+    updateSwapCalculation();
+}
+
+// Swap functions
+function swapTokens() {
+    const fromToken = document.getElementById('fromToken').textContent;
+    const toToken = document.getElementById('toToken').textContent;
+    const fromBalance = document.getElementById('fromBalance').textContent;
+    const toBalance = document.getElementById('toBalance').textContent;
+    const fromAmount = document.getElementById('fromAmount').value;
+    const toAmount = document.getElementById('toAmount').value;
+    
+    // Swap the tokens
+    document.getElementById('fromToken').textContent = toToken;
+    document.getElementById('toToken').textContent = fromToken;
+    document.getElementById('fromBalance').textContent = toBalance;
+    document.getElementById('toBalance').textContent = fromBalance;
+    document.getElementById('fromAmount').value = toAmount;
+    document.getElementById('toAmount').value = fromAmount;
+    
+    // Swap the icons
+    const fromIcon = document.querySelector('#fromToken').parentElement.querySelector('.token-icon');
+    const toIcon = document.querySelector('#toToken').parentElement.querySelector('.token-icon');
+    const tempSrc = fromIcon.src;
+    fromIcon.src = toIcon.src;
+    toIcon.src = tempSrc;
+    
+    updateSwapCalculation();
+}
+
+function updateSwapCalculation() {
+    const fromAmount = parseFloat(document.getElementById('fromAmount')?.value || 0);
+    const toAmountInput = document.getElementById('toAmount');
+    const exchangeRateElement = document.getElementById('exchangeRate');
+    const priceImpactElement = document.getElementById('priceImpact');
+    
+    if (fromAmount > 0) {
+        const rate = 0.8; // Example exchange rate
+        const toAmount = fromAmount * rate;
+        
+        if (toAmountInput) toAmountInput.value = toAmount.toFixed(4);
+        if (exchangeRateElement) exchangeRateElement.textContent = `1 FanKoin = ${rate.toFixed(4)} TAYLOR`;
+        if (priceImpactElement) priceImpactElement.textContent = '< 0.01%';
+    } else {
+        if (toAmountInput) toAmountInput.value = '';
+    }
+}
+
+function executeSwap() {
+    const fromAmount = document.getElementById('fromAmount').value;
+    const fromToken = document.getElementById('fromToken').textContent;
+    const toToken = document.getElementById('toToken').textContent;
+    
+    if (!fromAmount || parseFloat(fromAmount) <= 0) {
+        alert('Please enter a valid amount to swap');
+        return;
     }
     
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-stats {
-        justify-content: center;
-        gap: 2rem;
-    }
-    
-    .hero-actions {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    .charity-auction-preview {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-    
-    .swap-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .current-bid-display {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .charity-timer {
-        gap: 0.5rem;
-    }
-    
-    .charity-timer-large {
-        gap: 0.5rem;
-    }
-    
-    .category-tabs {
-        gap: 0.5rem;
-    }
-    
-    .category-tab {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-    }
-    
-    .grid-header {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .grid-controls {
-        justify-content: center;
-    }
-    
-    .tokens-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .token-detail-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .social-links {
-        justify-content: center;
-    }
+    alert(`Swapping ${fromAmount} ${fromToken} for ${toToken}...`);
+    // Here you would implement the actual swap logic
 }
 
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
+// Charity auction functions
+function placeCharityBid() {
+    const bidAmount = document.getElementById('charityBidAmount').value;
+    if (!bidAmount || parseFloat(bidAmount) < 1) {
+        alert('Please enter a valid bid amount (minimum $1)');
+        return;
     }
     
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-stats {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .modal {
-        width: 95%;
-    }
-    
-    .modal-body {
-        padding: 1.5rem;
-    }
-    
-    .section-header h2 {
-        font-size: 2rem;
-    }
-    
-    .token-card {
-        padding: 1rem;
-    }
+    alert(`Placing bid of $${bidAmount} for Golshifteh Farahani charity auction...`);
+    closeCharityBidModal();
 }
+
+// Timer functions
+function startCharityTimer() {
+    const hoursElement = document.getElementById('charityHours');
+    const minutesElement = document.getElementById('charityMinutes');
+    const secondsElement = document.getElementById('charitySeconds');
+    
+    if (!hoursElement || !minutesElement || !secondsElement) return;
+    
+    let totalSeconds = 2 * 3600 + 45 * 60 + 23; // 2h 45m 23s
+    
+    const timer = setInterval(() => {
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        
+        hoursElement.textContent = hours.toString().padStart(2, '0');
+        minutesElement.textContent = minutes.toString().padStart(2, '0');
+        secondsElement.textContent = seconds.toString().padStart(2, '0');
+        
+        totalSeconds--;
+        
+        if (totalSeconds < 0) {
+            clearInterval(timer);
+            hoursElement.textContent = '00';
+            minutesElement.textContent = '00';
+            secondsElement.textContent = '00';
+        }
+    }, 1000);
+}
+
+// Trading functions
+function openTokenDetail(tokenId) {
+    const token = sampleTokens.find(t => t.id === tokenId);
+    if (!token) return;
+    
+    alert(`Opening details for ${token.name} (${token.symbol})`);
+    // Here you would open a detailed token modal
+}
+
+function buyToken(tokenId) {
+    const token = sampleTokens.find(t => t.id === tokenId);
+    if (!token) return;
+    
+    alert(`Buying ${token.symbol} at $${token.price.toFixed(2)}`);
+}
+
+function sellToken(tokenId) {
+    const token = sampleTokens.find(t => t.id === tokenId);
+    if (!token) return;
+    
+    alert(`Selling ${token.symbol} at $${token.price.toFixed(2)}`);
+}
+
+function loadMoreTokens() {
+    alert('Loading more tokens...');
+    // Here you would load additional tokens
+}
+
+// Utility functions
+function copyAddress() {
+    navigator.clipboard.writeText('0x742d35Cc6C4C0532E3a0532E3a0532E3a04e8f').then(() => {
+        alert('Address copied to clipboard!');
+    });
+}
+
+// Connect wallet function
+document.getElementById('connectWallet')?.addEventListener('click', function() {
+    alert('Connecting wallet...');
+    // Here you would implement wallet connection logic
+});
+
+// Close modals when clicking outside
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal-overlay')) {
+        const activeModal = e.target;
+        activeModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
